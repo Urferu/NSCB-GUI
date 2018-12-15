@@ -87,25 +87,32 @@ namespace NSCB_GUI
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            int siguiente = randomTipoDiversion.Next(1, 3);
+            int siguiente = randomTipoDiversion.Next(1, 4);
             string lista = "";
+            Cursor.Current = Cursors.WaitCursor;
             switch(siguiente)
             {
                 case 1:
                     lista = DownloadStringServer("https://raw.githubusercontent.com/Urferu/NSCB-GUI/master/Chistes/cantidad_chistes");
-                    siguiente = randomNumeroDiversion.Next(1, Convert.ToInt32(lista));
+                    siguiente = randomNumeroDiversion.Next(1, Convert.ToInt32(lista) + 1);
                     lista = DownloadStringServer("https://raw.githubusercontent.com/Urferu/NSCB-GUI/master/Chistes/" + siguiente);
+                    Cursor.Current = Cursors.Default;
                     MetroMessageBox.Show(this, lista.Split(':')[1], "CHISTE - " + lista.Split(':')[0], MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
                 case 2:
                     lista = DownloadStringServer("https://raw.githubusercontent.com/Urferu/NSCB-GUI/master/Consejos/cantidad_consejos");
-                    siguiente = randomNumeroDiversion.Next(1, Convert.ToInt32(lista));
-                    lista = DownloadStringServer("https://raw.githubusercontent.com/Urferu/NSCB-GUI/master/Chistes/" + siguiente);
+                    siguiente = randomNumeroDiversion.Next(1, Convert.ToInt32(lista) + 1);
+                    lista = DownloadStringServer("https://raw.githubusercontent.com/Urferu/NSCB-GUI/master/Consejos/" + siguiente);
+                    Cursor.Current = Cursors.Default;
                     MetroMessageBox.Show(this, lista.Split(':')[1], "CONSEJO - " + lista.Split(':')[0]);
                     break;
                 case 3:
+                case 4:
                     lista = DownloadStringServer("https://raw.githubusercontent.com/Urferu/NSCB-GUI/master/Memes/cantidad_memes");
-                    siguiente = randomNumeroDiversion.Next(1, Convert.ToInt32(lista));
+                    siguiente = randomNumeroDiversion.Next(1, Convert.ToInt32(lista) + 1);
+                    if (siguiente > Convert.ToInt32(lista))
+                        siguiente = Convert.ToInt32(lista);
+                    Cursor.Current = Cursors.Default;
                     new MemesForm(string.Format("https://raw.githubusercontent.com/Urferu/NSCB-GUI/master/Memes/{0}.jpg", siguiente)).ShowDialog();
                     break;
             }
