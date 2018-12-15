@@ -86,13 +86,13 @@ namespace NSCB_GUI
             //switch(siguiente)
             //{
             //    case 1:
-            //        lista = DownloadStringServer();
+            //        lista = DownloadStringServer("https://raw.githubusercontent.com/Urferu/NSCB-GUI/master/Chistes/cantidad_chistes");
             //        break;
             //    case 2:
-            //        lista = DownloadStringServer();
+            //        lista = DownloadStringServer("https://raw.githubusercontent.com/Urferu/NSCB-GUI/master/Consejos/cantidad_consejos");
             //        break;
             //    case 3:
-            //        lista = DownloadStringServer();
+            //        lista = DownloadStringServer("https://raw.githubusercontent.com/Urferu/NSCB-GUI/master/Memes/cantidad_memes");
             //        break;
             //}
         }
