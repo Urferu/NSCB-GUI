@@ -114,8 +114,8 @@ namespace NSCB_GUI
             proeso.StartInfo.Arguments = string.Format("/c NSCB.bat 1 1 {0} {1} {2}", comboBox1.SelectedIndex + 1, cbParchar.Checked ? 1 : 0, cbFirware.SelectedIndex);
             AgregarJuegosALaListaa("list.txt");
             FormProgreso formProgreso = new FormProgreso("Convirtiendo...", proeso);
-            formProgreso.ShowDialog();
-            completado(null, null);
+            if (formProgreso.ShowDialog() == DialogResult.OK)
+                completado(null, null);
         }
 
         private void botonEmpaquetar_Click(object sender, EventArgs e)
@@ -129,8 +129,8 @@ namespace NSCB_GUI
             proeso.StartInfo.Arguments = string.Format("/c NSCB.bat 2 1 {0} {1} {2} {3}", comboBox1.SelectedIndex + 1, cbParchar.Checked ? 1 : 0, cbFirware.SelectedIndex, nombreFinal);
             AgregarJuegosALaListaa("mlist.txt");
             FormProgreso formProgreso = new FormProgreso("Convirtiendo...", proeso);
-            formProgreso.ShowDialog();
-            completado(null, null);
+            if(formProgreso.ShowDialog() == DialogResult.OK)
+                completado(null, null);
         }
 
         private List<string> CreaDirectoriosNecesarios()

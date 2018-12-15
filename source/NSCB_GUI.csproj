@@ -81,6 +81,12 @@
     <Compile Include="FrmNombreEmpaquetado.Designer.cs">
       <DependentUpon>FrmNombreEmpaquetado.cs</DependentUpon>
     </Compile>
+    <Compile Include="MemesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MemesForm.Designer.cs">
+      <DependentUpon>MemesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WinApi.cs" />
@@ -95,6 +101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNombreEmpaquetado.resx">
       <DependentUpon>FrmNombreEmpaquetado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemesForm.resx">
+      <DependentUpon>MemesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

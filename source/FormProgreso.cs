@@ -14,6 +14,7 @@ namespace NSCB_GUI
         private Process convertirEmpaquetar;
         Random randomTipoDiversion = new Random();
         Random randomNumeroDiversion = new Random();
+        bool cancelado = false;
         public FormProgreso(string title, Process proceso)
         {
             InitializeComponent();
@@ -36,7 +37,6 @@ namespace NSCB_GUI
         private void procesoConversion_DoWork(object sender, DoWorkEventArgs e)
         {
             convertirEmpaquetar.EnableRaisingEvents = true;
-            convertirEmpaquetar.Exited += Completado;
             convertirEmpaquetar.Start();
             while (convertirEmpaquetar.MainWindowHandle.ToInt32() == 0)
             {
@@ -51,6 +51,8 @@ namespace NSCB_GUI
                 WinApi.RemoveBorder(convertirEmpaquetar);
             }
             convertirEmpaquetar.WaitForExit();
+            if(!cancelado)
+                Completado(null, null);
         }
 
         private delegate void completadoDelegate(object sender, EventArgs e);
@@ -64,12 +66,14 @@ namespace NSCB_GUI
             else
             {
                 MetroMessageBox.Show(this, "En hora buena esto ha terminado.", "", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                DialogResult = DialogResult.OK;
                 Close();
             }
         }
 
         private void botonConvertir_Click(object sender, EventArgs e)
         {
+            cancelado = true;
             try
             {
                 convertirEmpaquetar.Kill();
@@ -77,24 +81,34 @@ namespace NSCB_GUI
             catch
             {
             }
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
             int siguiente = randomTipoDiversion.Next(1, 3);
             string lista = "";
-            //switch(siguiente)
-            //{
-            //    case 1:
-            //        lista = DownloadStringServer("https://raw.githubusercontent.com/Urferu/NSCB-GUI/master/Chistes/cantidad_chistes");
-            //        break;
-            //    case 2:
-            //        lista = DownloadStringServer("https://raw.githubusercontent.com/Urferu/NSCB-GUI/master/Consejos/cantidad_consejos");
-            //        break;
-            //    case 3:
-            //        lista = DownloadStringServer("https://raw.githubusercontent.com/Urferu/NSCB-GUI/master/Memes/cantidad_memes");
-            //        break;
-            //}
+            switch(siguiente)
+            {
+                case 1:
+                    lista = DownloadStringServer("https://raw.githubusercontent.com/Urferu/NSCB-GUI/master/Chistes/cantidad_chistes");
+                    siguiente = randomNumeroDiversion.Next(1, Convert.ToInt32(lista));
+                    lista = DownloadStringServer("https://raw.githubusercontent.com/Urferu/NSCB-GUI/master/Chistes/" + siguiente);
+                    MetroMessageBox.Show(this, lista.Split(':')[1], "CHISTE - " + lista.Split(':')[0], MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+                case 2:
+                    lista = DownloadStringServer("https://raw.githubusercontent.com/Urferu/NSCB-GUI/master/Consejos/cantidad_consejos");
+                    siguiente = randomNumeroDiversion.Next(1, Convert.ToInt32(lista));
+                    lista = DownloadStringServer("https://raw.githubusercontent.com/Urferu/NSCB-GUI/master/Chistes/" + siguiente);
+                    MetroMessageBox.Show(this, lista.Split(':')[1], "CONSEJO - " + lista.Split(':')[0]);
+                    break;
+                case 3:
+                    lista = DownloadStringServer("https://raw.githubusercontent.com/Urferu/NSCB-GUI/master/Memes/cantidad_memes");
+                    siguiente = randomNumeroDiversion.Next(1, Convert.ToInt32(lista));
+                    new MemesForm(string.Format("https://raw.githubusercontent.com/Urferu/NSCB-GUI/master/Memes/{0}.jpg", siguiente)).ShowDialog();
+                    break;
+            }
         }
 
         private string DownloadStringServer(string url)

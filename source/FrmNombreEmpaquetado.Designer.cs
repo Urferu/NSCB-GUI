@@ -90,8 +90,7 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox1;
+        
         private MetroFramework.Controls.MetroTextBox txtNombreFinal;
         private MetroFramework.Controls.MetroButton botonAceptar;
     }

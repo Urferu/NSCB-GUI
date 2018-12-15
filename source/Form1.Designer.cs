@@ -212,7 +212,6 @@
         private MetroFramework.Controls.MetroButton btnDependencias;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroComboBox comboBox1;
-        private System.Windows.Forms.CheckBox checkBox1;
         private MetroFramework.Controls.MetroCheckBox cbParchar;
         private MetroFramework.Controls.MetroComboBox cbFirware;
         private MetroFramework.Controls.MetroLabel metroLabel2;
