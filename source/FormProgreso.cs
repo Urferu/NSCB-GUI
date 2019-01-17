@@ -95,6 +95,8 @@ namespace NSCB_GUI
                 case 1:
                     lista = DownloadStringServer("https://raw.githubusercontent.com/Urferu/NSCB-GUI/master/Chistes/cantidad_chistes");
                     siguiente = randomNumeroDiversion.Next(1, Convert.ToInt32(lista) + 1);
+                    if (Convert.ToInt32(lista) < siguiente)
+                        siguiente = Convert.ToInt32(lista);
                     lista = DownloadStringServer("https://raw.githubusercontent.com/Urferu/NSCB-GUI/master/Chistes/" + siguiente);
                     Cursor.Current = Cursors.Default;
                     MetroMessageBox.Show(this, lista.Split(':')[1], "CHISTE - " + lista.Split(':')[0], MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -102,6 +104,8 @@ namespace NSCB_GUI
                 case 2:
                     lista = DownloadStringServer("https://raw.githubusercontent.com/Urferu/NSCB-GUI/master/Consejos/cantidad_consejos");
                     siguiente = randomNumeroDiversion.Next(1, Convert.ToInt32(lista) + 1);
+                    if (Convert.ToInt32(lista) < siguiente)
+                        siguiente = Convert.ToInt32(lista);
                     lista = DownloadStringServer("https://raw.githubusercontent.com/Urferu/NSCB-GUI/master/Consejos/" + siguiente);
                     Cursor.Current = Cursors.Default;
                     MetroMessageBox.Show(this, lista.Split(':')[1], "CONSEJO - " + lista.Split(':')[0]);
