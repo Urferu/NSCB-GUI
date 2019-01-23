@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace NSCB_GUI
 {
@@ -38,6 +39,17 @@ namespace NSCB_GUI
             IntPtr pFoundWindow = proc.MainWindowHandle;
             int style = GetWindowLong(pFoundWindow, GWL_STYLE);
             SetWindowLong(pFoundWindow, GWL_STYLE, (style & ~WS_CAPTION));
+        }
+
+        public static int CountFiles(string directory, params string[] searchCondition)
+        {
+            int totalFiles = 0;
+            DirectoryInfo d = new DirectoryInfo(directory);
+            foreach(string condition in searchCondition)
+            {
+                totalFiles+= d.GetFiles(condition).Length;
+            }
+            return totalFiles;
         }
     }
 }

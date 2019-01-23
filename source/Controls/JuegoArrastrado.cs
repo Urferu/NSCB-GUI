@@ -28,12 +28,13 @@ namespace NSCB_GUI.Controls
             get { return ubicacionJuegoLocal; }
             set
             {
-                if (File.Exists(value))
+                string fileValue = value;
+                if (File.Exists(fileValue))
                 {
-                    toolTip1.SetToolTip(lblQuitarJuego, Path.GetFileName(value));
-                    lblQuitarJuego.Text = Path.GetFileName(value);
+                    toolTip1.SetToolTip(lblQuitarJuego, Path.GetFileName(fileValue));
+                    lblQuitarJuego.Text = Path.GetFileName(fileValue);
                 }
-                ubicacionJuegoLocal = value;
+                ubicacionJuegoLocal = fileValue;
             }
         }
 

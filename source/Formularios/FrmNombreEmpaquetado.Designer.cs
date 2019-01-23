@@ -52,7 +52,7 @@
             this.txtNombreFinal.MaxLength = 32767;
             this.txtNombreFinal.Name = "txtNombreFinal";
             this.txtNombreFinal.PasswordChar = '\0';
-            this.txtNombreFinal.PromptText = "Nombre Final del Juego";
+            this.txtNombreFinal.WaterMark = "Nombre Final del Juego";
             this.txtNombreFinal.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtNombreFinal.SelectedText = "";
             this.txtNombreFinal.SelectionLength = 0;
@@ -61,7 +61,6 @@
             this.txtNombreFinal.Size = new System.Drawing.Size(452, 20);
             this.txtNombreFinal.TabIndex = 0;
             this.txtNombreFinal.UseSelectable = true;
-            this.txtNombreFinal.WaterMark = "Nombre Final del Juego";
             this.txtNombreFinal.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtNombreFinal.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 

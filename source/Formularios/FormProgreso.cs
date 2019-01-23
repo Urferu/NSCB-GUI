@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
@@ -6,6 +7,7 @@ using System.Windows.Forms;
 using MetroFramework;
 using MetroFramework.Forms;
 using System.Net;
+using NSCB_GUI.Controls;
 
 namespace NSCB_GUI
 {
@@ -15,22 +17,48 @@ namespace NSCB_GUI
         Random randomTipoDiversion = new Random();
         Random randomNumeroDiversion = new Random();
         bool cancelado = false;
-        public FormProgreso(string title, Process proceso)
+        string argumentosFinales = "";
+        string juegoActual = "";
+        Control.ControlCollection controles;
+        public FormProgreso(string title, Process proceso, Control.ControlCollection directorios = null)
         {
             InitializeComponent();
             convertirEmpaquetar = proceso;
             Text = title;
             ServicePointManager.Expect100Continue = true;
+            controles = directorios;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
         }
 
         private void FormProgreso_Load(object sender, System.EventArgs e)
         {
+            if(!(controles is null) && controles.Count > 0)
+            {
+                pbProgreso.Visible = true;
+                lblProceso.Visible = true;
+                pbProgreso.Maximum = controles.Count;
+                lblProceso.Text = "0/" + pbProgreso.Maximum;
+                List<string> argumentos = new List<string>(convertirEmpaquetar.StartInfo.Arguments.Split(' '));
+                argumentos.RemoveAt(argumentos.Count - 1);
+                argumentosFinales = string.Join(" ", argumentos.ToArray());
+            }
             PreparaComienzo();
         }
 
         private void PreparaComienzo()
         {
+            if (!(controles is null) && controles.Count > 0)
+            {
+                if (!cancelado)
+                {
+                    juegoActual = (controles[pbProgreso.Value] as DirectorioArrastrado).NombreJuego.Replace(" ", "_");
+                    AgregarJuegosALaListaa("mlist.txt", (controles[pbProgreso.Value] as DirectorioArrastrado).JuegosLista);
+                    convertirEmpaquetar = new Process();
+                    convertirEmpaquetar.StartInfo.FileName = "cmd.exe";
+                    convertirEmpaquetar.StartInfo.Arguments = string.Format("{0} {1}", argumentosFinales, juegoActual);
+                    this.Text = "Empaquetando " + juegoActual + "...";
+                }
+            }
             procesoConversion.RunWorkerAsync();
         }
 
@@ -43,16 +71,23 @@ namespace NSCB_GUI
             }
             if (convertirEmpaquetar.MainWindowHandle.ToInt32() > 0)
             {
-                WinApi.SetParent(convertirEmpaquetar.MainWindowHandle, pnDatos.Handle);
-                WinApi.MoveWindow(convertirEmpaquetar.MainWindowHandle,
-                    0, 0,
-                    nWidth: pnDatos.Width,
-                    nHeight: pnDatos.Height, bRepaint: 1);
-                WinApi.RemoveBorder(convertirEmpaquetar);
+                procesoConversion.ReportProgress(0);
             }
+            
             convertirEmpaquetar.WaitForExit();
-            if(!cancelado)
+            if (!cancelado)
                 Completado(null, null);
+
+        }
+
+        private void procesoConversion_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            WinApi.SetParent(convertirEmpaquetar.MainWindowHandle, pnDatos.Handle);
+            WinApi.MoveWindow(convertirEmpaquetar.MainWindowHandle,
+                0, 0,
+                nWidth: pnDatos.Width,
+                nHeight: pnDatos.Height, bRepaint: 1);
+            WinApi.RemoveBorder(convertirEmpaquetar);
         }
 
         private delegate void completadoDelegate(object sender, EventArgs e);
@@ -65,9 +100,18 @@ namespace NSCB_GUI
             }
             else
             {
-                MetroMessageBox.Show(this, "En hora buena esto ha terminado.", "", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                DialogResult = DialogResult.OK;
-                Close();
+                if (string.IsNullOrWhiteSpace(argumentosFinales) || (!(controles is null) && pbProgreso.Value >= controles.Count - 1))
+                {
+                    MetroMessageBox.Show(this, "En hora buena esto ha terminado.", "", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    DialogResult = DialogResult.OK;
+                    Close();
+                }
+                else
+                {
+                    pbProgreso.Value++;
+                    lblProceso.Text = pbProgreso.Value + "/" + pbProgreso.Maximum;
+                    PreparaComienzo();
+                }
             }
         }
 
@@ -77,6 +121,7 @@ namespace NSCB_GUI
             try
             {
                 convertirEmpaquetar.Kill();
+                borraPy();
             }
             catch
             {
@@ -153,6 +198,37 @@ namespace NSCB_GUI
             {
             }
             return responseFromServer;
+        }
+
+        private void AgregarJuegosALaListaa(string nombreLista, List<string>juegos)
+        {
+            StreamWriter lista = new StreamWriter(nombreLista);
+            foreach (string juego in juegos)
+            {
+                lista.WriteLine(juego);
+            }
+            lista.Close();
+        }
+
+        private void borraPy()
+        {
+            try
+            {
+                Process[] process = Process.GetProcessesByName("py");
+                if(process.Length == 0)
+                {
+                    process = Process.GetProcessesByName("py.exe");
+                }
+
+                foreach(Process procesoActual in process)
+                {
+                    procesoActual.Kill();
+                }
+            }
+            catch
+            {
+
+            }
         }
     }
 }

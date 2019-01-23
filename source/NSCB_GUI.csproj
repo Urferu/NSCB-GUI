@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -57,52 +58,80 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\DirectorioArrastrado.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\DirectorioArrastrado.Designer.cs">
+      <DependentUpon>DirectorioArrastrado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\JuegoArrastrado.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\JuegoArrastrado.Designer.cs">
       <DependentUpon>JuegoArrastrado.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Formularios\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Formularios\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormProgreso.cs">
+    <Compile Include="Formularios\FormJuegosCarpeta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormProgreso.Designer.cs">
+    <Compile Include="Formularios\FormJuegosCarpeta.Designer.cs">
+      <DependentUpon>FormJuegosCarpeta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FormProgreso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FormProgreso.Designer.cs">
       <DependentUpon>FormProgreso.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmNombreEmpaquetado.cs">
+    <Compile Include="Formularios\FrmNombreEmpaquetado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmNombreEmpaquetado.Designer.cs">
+    <Compile Include="Formularios\FrmNombreEmpaquetado.Designer.cs">
       <DependentUpon>FrmNombreEmpaquetado.cs</DependentUpon>
     </Compile>
-    <Compile Include="MemesForm.cs">
+    <Compile Include="Formularios\NovedadesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MemesForm.Designer.cs">
+    <Compile Include="Formularios\NovedadesForm.Designer.cs">
+      <DependentUpon>NovedadesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\MemesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\MemesForm.Designer.cs">
       <DependentUpon>MemesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WinApi.cs" />
+    <Compile Include="XCIFILE.cs" />
+    <EmbeddedResource Include="Controls\DirectorioArrastrado.resx">
+      <DependentUpon>DirectorioArrastrado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\JuegoArrastrado.resx">
       <DependentUpon>JuegoArrastrado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Formularios\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormProgreso.resx">
+    <EmbeddedResource Include="Formularios\FormJuegosCarpeta.resx">
+      <DependentUpon>FormJuegosCarpeta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FormProgreso.resx">
       <DependentUpon>FormProgreso.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmNombreEmpaquetado.resx">
+    <EmbeddedResource Include="Formularios\FrmNombreEmpaquetado.resx">
       <DependentUpon>FrmNombreEmpaquetado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MemesForm.resx">
+    <EmbeddedResource Include="Formularios\NovedadesForm.resx">
+      <DependentUpon>NovedadesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\MemesForm.resx">
       <DependentUpon>MemesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -113,6 +142,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -131,6 +161,12 @@
   <ItemGroup>
     <Content Include="MetroFramework.txt" />
     <Content Include="NSCBIcon.ico" />
+    <None Include="Resources\Novedad-5.png" />
+    <None Include="Resources\Novedad-4.png" />
+    <None Include="Resources\Novedad-3.png" />
+    <None Include="Resources\Novedad-2.png" />
+    <None Include="Resources\Novedad-1.png" />
+    <None Include="Resources\Novedad-0.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

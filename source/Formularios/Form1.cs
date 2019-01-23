@@ -13,12 +13,21 @@ namespace NSCB_GUI
     public partial class Form1 : MetroForm
     {
         List<string> juegos;
+        List<string> directorios;
         public Form1()
         {
             juegos = new List<string>();
+            directorios = new List<string>();
             InitializeComponent();
             comboBox1.SelectedIndex = 2;
             cbFirware.SelectedIndex = 7;
+            if(!File.Exists("novedad.dat"))
+            {
+                NovedadesForm novedades = new NovedadesForm();
+                novedades.ShowDialog();
+                StreamWriter srNovedad = new StreamWriter("novedad.dat");
+                srNovedad.Close();
+            }
         }
 
         private void Form1_Resize(object sender, EventArgs e)
@@ -32,6 +41,10 @@ namespace NSCB_GUI
             {
                 LlenarListaDeJuegos();
             }
+            if(directorios.Count > 0)
+            {
+                LlenarListaDeDirectorios();
+            }
         }
 
         private void panelJuegos_DragEnter(object sender, DragEventArgs e)
@@ -42,39 +55,80 @@ namespace NSCB_GUI
         private void Form1_DragDrop(object sender, DragEventArgs e)
         {
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-            bool archivosConEspacios = false;
+            //bool archivosConEspacios = false;
             foreach (string file in files)
             {
                 if(Path.GetExtension(file).ToUpper().Equals(".NSP") || Path.GetExtension(file).ToUpper().Equals(".XCI"))
                 {
-                    if(Path.GetFileName(file).Contains(" "))
+                    juegos.Add(file);
+                }
+                else if(Directory.Exists(file))
+                {
+                    if (WinApi.CountFiles(file, "*.NSP", "*.XCI") > 0)
                     {
-                        File.Move(file, file.Replace(' ', '_'));
-                        juegos.Add(file.Replace(' ', '_'));
-                        archivosConEspacios = true;
+                        directorios.Add(file);
                     }
-                    else
-                    {
-                        juegos.Add(file);
-                    }
+                }
+            }
+            if(directorios.Count > 0 && juegos.Count > 0)
+            {
+                DialogResult mensaje = MetroMessageBox.Show(this, "Se ha detectado que se han arrastrado archivos y carpetas. ¿Deseas Tomar las carpetas para empaquetar los juegos?",
+                    this.Text , MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if(mensaje == DialogResult.Yes)
+                {
+                    juegos.Clear();
+                }
+                else
+                {
+                    directorios.Clear();
                 }
             }
             if(juegos.Count > 0)
             {
-                if(archivosConEspacios)
-                {
-                    MetroMessageBox.Show(this, "Se han encontrado archivos con espacios en el nombre y han sido reemplazados por '_', Esperamos que no te moleste =)",
-                        this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
                 LlenarListaDeJuegos();
             }
-            if(juegos.Count > 8)
+            if(directorios.Count > 0)
+            {
+                LlenarListaDeDirectorios();
+                botonEmpaquetar.Enabled = true;
+                botonConvertir.Enabled = false;
+            }
+            else
+            {
+                botonEmpaquetar.Enabled = true;
+                botonConvertir.Enabled = true;
+            }
+
+            if (juegos.Count > 8)
             {
                 botonEmpaquetar.Enabled = false;
             }
             else
             {
                 botonEmpaquetar.Enabled = true;
+            }
+        }
+
+        /// <summary>
+        /// Se encarga de llenar la lista de juegos.
+        /// </summary>
+        private void LlenarListaDeDirectorios()
+        {
+            panelJuegos.Controls.Clear();
+            DirectorioArrastrado juegoArrastradoActual;
+            int posicionYActual = 3;
+            int indice = 0;
+
+            foreach(string juego in directorios)
+            {
+                juegoArrastradoActual = new DirectorioArrastrado(EliminaDirectorio);
+                juegoArrastradoActual.ubicacionJuego = juego;
+                juegoArrastradoActual.indiceJuego = indice;
+                juegoArrastradoActual.Location = new Point(3, posicionYActual);
+                juegoArrastradoActual.Width = panelJuegos.Width - 6;
+                panelJuegos.Controls.Add(juegoArrastradoActual);
+                posicionYActual = posicionYActual + juegoArrastradoActual.Height + 3;
+                indice++;
             }
         }
 
@@ -88,7 +142,7 @@ namespace NSCB_GUI
             int posicionYActual = 3;
             int indice = 0;
 
-            foreach(string juego in juegos)
+            foreach (string juego in juegos)
             {
                 juegoArrastradoActual = new JuegoArrastrado(EliminaJuego);
                 juegoArrastradoActual.ubicacionJuego = juego;
@@ -107,6 +161,12 @@ namespace NSCB_GUI
             LlenarListaDeJuegos();
         }
 
+        private void EliminaDirectorio(int indice)
+        {
+            directorios.RemoveAt(indice);
+            LlenarListaDeDirectorios();
+        }
+
         private void botonConvertir_Click(object sender, EventArgs e)
         {
             Process proeso = new Process();
@@ -120,15 +180,20 @@ namespace NSCB_GUI
 
         private void botonEmpaquetar_Click(object sender, EventArgs e)
         {
-            FrmNombreEmpaquetado formEmpaquetado = new FrmNombreEmpaquetado();
-            formEmpaquetado.ShowDialog();
-            string nombreFinal = formEmpaquetado.nombreFinal;
+            string nombreFinal = "temp";
+            if (directorios.Count == 0)
+            {
+                FrmNombreEmpaquetado formEmpaquetado = new FrmNombreEmpaquetado();
+                formEmpaquetado.ShowDialog();
+                nombreFinal = formEmpaquetado.nombreFinal;
+            }
 
             Process proeso = new Process();
             proeso.StartInfo.FileName = "cmd.exe";
             proeso.StartInfo.Arguments = string.Format("/c NSCB.bat 2 1 {0} {1} {2} {3}", comboBox1.SelectedIndex + 1, cbParchar.Checked ? 1 : 0, cbFirware.SelectedIndex, nombreFinal);
-            AgregarJuegosALaListaa("mlist.txt");
-            FormProgreso formProgreso = new FormProgreso("Convirtiendo...", proeso);
+            if (directorios.Count == 0)
+                AgregarJuegosALaListaa("mlist.txt");
+            FormProgreso formProgreso = new FormProgreso("Empaquetando...", proeso, panelJuegos.Controls);
             if(formProgreso.ShowDialog() == DialogResult.OK)
                 completado(null, null);
         }
@@ -212,3 +277,4 @@ namespace NSCB_GUI
         }
     }
 }
+

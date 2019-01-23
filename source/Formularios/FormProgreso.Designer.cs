@@ -31,8 +31,9 @@
             this.botonConvertir = new MetroFramework.Controls.MetroButton();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.procesoConversion = new System.ComponentModel.BackgroundWorker();
-            this.procesoEmpquetacion = new System.ComponentModel.BackgroundWorker();
             this.pnDatos = new System.Windows.Forms.Panel();
+            this.pbProgreso = new System.Windows.Forms.ProgressBar();
+            this.lblProceso = new MetroFramework.Controls.MetroLabel();
             this.SuspendLayout();
             // 
             // botonConvertir
@@ -60,11 +61,7 @@
             this.procesoConversion.WorkerReportsProgress = true;
             this.procesoConversion.WorkerSupportsCancellation = true;
             this.procesoConversion.DoWork += new System.ComponentModel.DoWorkEventHandler(this.procesoConversion_DoWork);
-            // 
-            // procesoEmpquetacion
-            // 
-            this.procesoEmpquetacion.WorkerReportsProgress = true;
-            this.procesoEmpquetacion.WorkerSupportsCancellation = true;
+            this.procesoConversion.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.procesoConversion_ProgressChanged);
             // 
             // pnDatos
             // 
@@ -73,12 +70,33 @@
             this.pnDatos.Size = new System.Drawing.Size(640, 320);
             this.pnDatos.TabIndex = 9;
             // 
+            // pbProgreso
+            // 
+            this.pbProgreso.Location = new System.Drawing.Point(12, 389);
+            this.pbProgreso.Name = "pbProgreso";
+            this.pbProgreso.Size = new System.Drawing.Size(254, 23);
+            this.pbProgreso.TabIndex = 10;
+            this.pbProgreso.Visible = false;
+            // 
+            // lblProceso
+            // 
+            this.lblProceso.AutoSize = true;
+            this.lblProceso.BackColor = System.Drawing.Color.Transparent;
+            this.lblProceso.Location = new System.Drawing.Point(271, 392);
+            this.lblProceso.Name = "lblProceso";
+            this.lblProceso.Size = new System.Drawing.Size(28, 19);
+            this.lblProceso.TabIndex = 11;
+            this.lblProceso.Text = "1/1";
+            this.lblProceso.Visible = false;
+            // 
             // FormProgreso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(663, 423);
             this.ControlBox = false;
+            this.Controls.Add(this.lblProceso);
+            this.Controls.Add(this.pbProgreso);
             this.Controls.Add(this.pnDatos);
             this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.botonConvertir);
@@ -89,6 +107,7 @@
             this.Text = "Convirtiendo...";
             this.Load += new System.EventHandler(this.FormProgreso_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -96,7 +115,8 @@
         private MetroFramework.Controls.MetroButton botonConvertir;
         private MetroFramework.Controls.MetroButton metroButton1;
         private System.ComponentModel.BackgroundWorker procesoConversion;
-        private System.ComponentModel.BackgroundWorker procesoEmpquetacion;
         private System.Windows.Forms.Panel pnDatos;
+        private System.Windows.Forms.ProgressBar pbProgreso;
+        private MetroFramework.Controls.MetroLabel lblProceso;
     }
 }
