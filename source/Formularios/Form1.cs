@@ -37,6 +37,10 @@ namespace NSCB_GUI
             botonEmpaquetar.Location = new Point(this.Width - 97, this.Height - 42);
             botonConvertir.Location = new Point(this.Width - 178, botonEmpaquetar.Location.Y);
             btnDependencias.Location = new Point(btnDependencias.Location.X, botonEmpaquetar.Location.Y);
+            metroLabel1.Location = new Point(this.Width - 164, metroLabel1.Location.Y);
+            comboBox1.Location = new Point(this.Width - 97, comboBox1.Location.Y);
+            metroLabel2.Location = new Point(this.Width - 273, metroLabel2.Location.Y);
+            cbFirware.Location = new Point(this.Width - 164, cbFirware.Location.Y);
             if (juegos.Count > 0)
             {
                 LlenarListaDeJuegos();
@@ -259,6 +263,15 @@ namespace NSCB_GUI
                 carpeta.Start();
                 panelJuegos.Controls.Clear();
                 juegos.Clear();
+                directorios.Clear();
+                if(cbApagar.Checked)
+                {
+                    Process shutdown = new Process();
+                    ProcessStartInfo modulo = new ProcessStartInfo("C:\\WINDOWS\\SYSTEM32\\SHUTDOWN.EXE");
+                    modulo.Arguments = " -s -t 0";
+                    shutdown.StartInfo = modulo;
+                    shutdown.Start();
+                }
             }
         }
 

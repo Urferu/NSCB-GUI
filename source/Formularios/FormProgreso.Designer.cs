@@ -62,6 +62,7 @@
             this.procesoConversion.WorkerSupportsCancellation = true;
             this.procesoConversion.DoWork += new System.ComponentModel.DoWorkEventHandler(this.procesoConversion_DoWork);
             this.procesoConversion.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.procesoConversion_ProgressChanged);
+            this.procesoConversion.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.procesoConversion_RunWorkerCompleted);
             // 
             // pnDatos
             // 

@@ -81,7 +81,6 @@ namespace NSCB_GUI
                     if (!cancelado)
                     {
                         juegoActual = directorioactal.NombreJuego.Replace(" ", "_");
-                        procesoConversion.ReportProgress(1);
                         AgregarJuegosALaListaa("mlist.txt", directorioactal.JuegosLista);
                         convertirEmpaquetar = new Process();
                         convertirEmpaquetar.StartInfo.FileName = "cmd.exe";
@@ -96,15 +95,12 @@ namespace NSCB_GUI
                         {
                             procesoConversion.ReportProgress(0);
                         }
-
+                        procesoConversion.ReportProgress(1);
                         convertirEmpaquetar.WaitForExit();
                     }
                     procesoConversion.ReportProgress(2);
                 }
             }
-            if (!cancelado)
-                Completado(null, null);
-
         }
 
         private void procesoConversion_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -127,6 +123,13 @@ namespace NSCB_GUI
                 pbProgreso.Value++;
                 lblProceso.Text = pbProgreso.Value + "/" + pbProgreso.Maximum;
             }
+            this.Refresh();
+        }
+
+        private void procesoConversion_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (!cancelado)
+                Completado(null, null);
         }
 
         private delegate void completadoDelegate(object sender, EventArgs e);
@@ -251,6 +254,17 @@ namespace NSCB_GUI
                 }
 
                 foreach(Process procesoActual in process)
+                {
+                    procesoActual.Kill();
+                }
+
+                process = Process.GetProcessesByName("python");
+                if (process.Length == 0)
+                {
+                    process = Process.GetProcessesByName("python.exe");
+                }
+
+                foreach (Process procesoActual in process)
                 {
                     procesoActual.Kill();
                 }

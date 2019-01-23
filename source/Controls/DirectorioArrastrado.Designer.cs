@@ -68,7 +68,7 @@
             this.btnMostrarJuegos.Size = new System.Drawing.Size(27, 23);
             this.btnMostrarJuegos.TabIndex = 1;
             this.btnMostrarJuegos.Text = "...";
-            this.toolTip1.SetToolTip(this.btnMostrarJuegos, "Mostrara Juegos");
+            this.toolTip1.SetToolTip(this.btnMostrarJuegos, "Mostrara Archivos");
             this.btnMostrarJuegos.UseSelectable = true;
             this.btnMostrarJuegos.Click += new System.EventHandler(this.btnMostrarJuegos_Click);
             // 

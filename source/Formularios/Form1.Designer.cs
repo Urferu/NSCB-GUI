@@ -36,17 +36,18 @@
             this.toltipArrastre = new MetroFramework.Components.MetroToolTip();
             this.btnDependencias = new MetroFramework.Controls.MetroButton();
             this.comboBox1 = new MetroFramework.Controls.MetroComboBox();
+            this.cbFirware = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.cbParchar = new MetroFramework.Controls.MetroCheckBox();
-            this.cbFirware = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.cbApagar = new MetroFramework.Controls.MetroCheckBox();
             this.SuspendLayout();
             // 
             // lblArrastre
             // 
             this.lblArrastre.AutoSize = true;
             this.lblArrastre.BackColor = System.Drawing.Color.Transparent;
-            this.lblArrastre.Location = new System.Drawing.Point(23, 64);
+            this.lblArrastre.Location = new System.Drawing.Point(23, 121);
             this.lblArrastre.Name = "lblArrastre";
             this.lblArrastre.Size = new System.Drawing.Size(150, 19);
             this.lblArrastre.TabIndex = 1;
@@ -126,27 +127,6 @@
             this.toltipArrastre.SetToolTip(this.comboBox1, "Formato al que se desean convertir los juegos");
             this.comboBox1.UseSelectable = true;
             // 
-            // metroLabel1
-            // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.metroLabel1.Location = new System.Drawing.Point(277, 60);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(63, 19);
-            this.metroLabel1.TabIndex = 5;
-            this.metroLabel1.Text = "Formato:";
-            // 
-            // cbParchar
-            // 
-            this.cbParchar.AutoSize = true;
-            this.cbParchar.Location = new System.Drawing.Point(23, 122);
-            this.cbParchar.Name = "cbParchar";
-            this.cbParchar.Size = new System.Drawing.Size(125, 15);
-            this.cbParchar.TabIndex = 7;
-            this.cbParchar.Text = "Parche de firmware";
-            this.cbParchar.UseSelectable = true;
-            this.cbParchar.CheckedChanged += new System.EventHandler(this.cbParchar_CheckedChanged);
-            // 
             // cbFirware
             // 
             this.cbFirware.Enabled = false;
@@ -161,22 +141,54 @@
             "5.0.0-5.1.0",
             "6.0.0-6.1.0",
             "6.2.0"});
-            this.cbFirware.Location = new System.Drawing.Point(277, 112);
+            this.cbFirware.Location = new System.Drawing.Point(277, 87);
             this.cbFirware.Name = "cbFirware";
             this.cbFirware.Size = new System.Drawing.Size(141, 29);
             this.cbFirware.TabIndex = 9;
             this.toltipArrastre.SetToolTip(this.cbFirware, "Firmware para el que se quiere parchar el juego");
             this.cbFirware.UseSelectable = true;
             // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.metroLabel1.Location = new System.Drawing.Point(277, 60);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(63, 19);
+            this.metroLabel1.TabIndex = 5;
+            this.metroLabel1.Text = "Formato:";
+            // 
+            // cbParchar
+            // 
+            this.cbParchar.AutoSize = true;
+            this.cbParchar.Location = new System.Drawing.Point(23, 97);
+            this.cbParchar.Name = "cbParchar";
+            this.cbParchar.Size = new System.Drawing.Size(125, 15);
+            this.cbParchar.TabIndex = 7;
+            this.cbParchar.Text = "Parche de firmware";
+            this.cbParchar.UseSelectable = true;
+            this.cbParchar.CheckedChanged += new System.EventHandler(this.cbParchar_CheckedChanged);
+            // 
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.metroLabel2.Location = new System.Drawing.Point(168, 118);
+            this.metroLabel2.Location = new System.Drawing.Point(168, 93);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(103, 19);
             this.metroLabel2.TabIndex = 8;
             this.metroLabel2.Text = "Firmware patch:";
+            // 
+            // cbApagar
+            // 
+            this.cbApagar.AutoSize = true;
+            this.cbApagar.Location = new System.Drawing.Point(23, 64);
+            this.cbApagar.Name = "cbApagar";
+            this.cbApagar.Size = new System.Drawing.Size(117, 15);
+            this.cbApagar.TabIndex = 10;
+            this.cbApagar.Text = "Apagar al finalizar";
+            this.toltipArrastre.SetToolTip(this.cbApagar, "Apaga el sistema al finalizar la tarea solicitada.");
+            this.cbApagar.UseSelectable = true;
             // 
             // Form1
             // 
@@ -184,6 +196,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(441, 394);
+            this.Controls.Add(this.cbApagar);
             this.Controls.Add(this.cbFirware);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.cbParchar);
@@ -215,6 +228,7 @@
         private MetroFramework.Controls.MetroCheckBox cbParchar;
         private MetroFramework.Controls.MetroComboBox cbFirware;
         private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroCheckBox cbApagar;
     }
 }
 
