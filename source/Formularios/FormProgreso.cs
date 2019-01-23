@@ -32,7 +32,7 @@ namespace NSCB_GUI
 
         private void FormProgreso_Load(object sender, System.EventArgs e)
         {
-            if(!(controles is null) && controles.Count > 0)
+            if(controles != null && controles.Count > 0)
             {
                 pbProgreso.Visible = true;
                 lblProceso.Visible = true;
@@ -47,7 +47,7 @@ namespace NSCB_GUI
 
         private void PreparaComienzo()
         {
-            if (!(controles is null) && controles.Count > 0)
+            if (controles != null && controles.Count > 0)
             {
                 if (!cancelado)
                 {
@@ -100,7 +100,7 @@ namespace NSCB_GUI
             }
             else
             {
-                if (string.IsNullOrWhiteSpace(argumentosFinales) || (!(controles is null) && pbProgreso.Value >= controles.Count - 1))
+                if (string.IsNullOrWhiteSpace(argumentosFinales) || (controles != null && pbProgreso.Value >= controles.Count - 1))
                 {
                     MetroMessageBox.Show(this, "En hora buena esto ha terminado.", "", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     DialogResult = DialogResult.OK;
