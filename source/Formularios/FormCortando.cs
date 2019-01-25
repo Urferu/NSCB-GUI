@@ -99,6 +99,15 @@ namespace NSCB_GUI
 
         private void bwCortar_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
+            try
+            {
+                if (!archivoXCI.cancelar)
+                    File.Delete(archivoXCI.nombreConRuta);
+            }
+            catch
+            {
+            }
+            
             tmUpdateBytes.Enabled = false;
             tmVelocidad.Enabled = false;
             this.Close();
