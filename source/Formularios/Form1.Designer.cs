@@ -37,10 +37,12 @@
             this.btnDependencias = new MetroFramework.Controls.MetroButton();
             this.comboBox1 = new MetroFramework.Controls.MetroComboBox();
             this.cbFirware = new MetroFramework.Controls.MetroComboBox();
+            this.cbApagar = new MetroFramework.Controls.MetroCheckBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.cbParchar = new MetroFramework.Controls.MetroCheckBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.cbApagar = new MetroFramework.Controls.MetroCheckBox();
+            this.cbSplit = new MetroFramework.Controls.MetroCheckBox();
+            this.btnCortar = new MetroFramework.Controls.MetroButton();
             this.SuspendLayout();
             // 
             // lblArrastre
@@ -129,7 +131,6 @@
             // 
             // cbFirware
             // 
-            this.cbFirware.Enabled = false;
             this.cbFirware.FormattingEnabled = true;
             this.cbFirware.ItemHeight = 23;
             this.cbFirware.Items.AddRange(new object[] {
@@ -147,6 +148,18 @@
             this.cbFirware.TabIndex = 9;
             this.toltipArrastre.SetToolTip(this.cbFirware, "Firmware para el que se quiere parchar el juego");
             this.cbFirware.UseSelectable = true;
+            this.cbFirware.Visible = false;
+            // 
+            // cbApagar
+            // 
+            this.cbApagar.AutoSize = true;
+            this.cbApagar.Location = new System.Drawing.Point(23, 64);
+            this.cbApagar.Name = "cbApagar";
+            this.cbApagar.Size = new System.Drawing.Size(117, 15);
+            this.cbApagar.TabIndex = 10;
+            this.cbApagar.Text = "Apagar al finalizar";
+            this.toltipArrastre.SetToolTip(this.cbApagar, "Apaga el sistema al finalizar la tarea solicitada.");
+            this.cbApagar.UseSelectable = true;
             // 
             // metroLabel1
             // 
@@ -161,7 +174,7 @@
             // cbParchar
             // 
             this.cbParchar.AutoSize = true;
-            this.cbParchar.Location = new System.Drawing.Point(23, 97);
+            this.cbParchar.Location = new System.Drawing.Point(23, 96);
             this.cbParchar.Name = "cbParchar";
             this.cbParchar.Size = new System.Drawing.Size(125, 15);
             this.cbParchar.TabIndex = 7;
@@ -178,17 +191,30 @@
             this.metroLabel2.Size = new System.Drawing.Size(103, 19);
             this.metroLabel2.TabIndex = 8;
             this.metroLabel2.Text = "Firmware patch:";
+            this.metroLabel2.Visible = false;
             // 
-            // cbApagar
+            // cbSplit
             // 
-            this.cbApagar.AutoSize = true;
-            this.cbApagar.Location = new System.Drawing.Point(23, 64);
-            this.cbApagar.Name = "cbApagar";
-            this.cbApagar.Size = new System.Drawing.Size(117, 15);
-            this.cbApagar.TabIndex = 10;
-            this.cbApagar.Text = "Apagar al finalizar";
-            this.toltipArrastre.SetToolTip(this.cbApagar, "Apaga el sistema al finalizar la tarea solicitada.");
-            this.cbApagar.UseSelectable = true;
+            this.cbSplit.AutoSize = true;
+            this.cbSplit.Location = new System.Drawing.Point(23, 80);
+            this.cbSplit.Name = "cbSplit";
+            this.cbSplit.Size = new System.Drawing.Size(70, 15);
+            this.cbSplit.TabIndex = 12;
+            this.cbSplit.Text = "4GB Split";
+            this.toltipArrastre.SetToolTip(this.cbSplit, "Cortar el archivo o archivos resultantes\r\nen archivos de 4GB para unidades FAT32." +
+        "\r\n(Solo funciona con xci)");
+            this.cbSplit.UseSelectable = true;
+            // 
+            // btnCortar
+            // 
+            this.btnCortar.Location = new System.Drawing.Point(181, 348);
+            this.btnCortar.Name = "btnCortar";
+            this.btnCortar.Size = new System.Drawing.Size(75, 23);
+            this.btnCortar.TabIndex = 13;
+            this.btnCortar.Text = "Cortar";
+            this.toltipArrastre.SetToolTip(this.btnCortar, "Convierte los juegos agregados");
+            this.btnCortar.UseSelectable = true;
+            this.btnCortar.Click += new System.EventHandler(this.btnCortar_Click);
             // 
             // Form1
             // 
@@ -196,6 +222,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(441, 394);
+            this.Controls.Add(this.btnCortar);
+            this.Controls.Add(this.cbSplit);
             this.Controls.Add(this.cbApagar);
             this.Controls.Add(this.cbFirware);
             this.Controls.Add(this.metroLabel2);
@@ -229,6 +257,8 @@
         private MetroFramework.Controls.MetroComboBox cbFirware;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroCheckBox cbApagar;
+        private MetroFramework.Controls.MetroCheckBox cbSplit;
+        private MetroFramework.Controls.MetroButton btnCortar;
     }
 }
 

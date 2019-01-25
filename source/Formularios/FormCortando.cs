@@ -1,0 +1,98 @@
+﻿using System;
+using System.IO;
+using MetroFramework;
+using MetroFramework.Forms;
+using System.Windows.Forms;
+
+namespace NSCB_GUI
+{
+    public partial class FormCortando : MetroForm
+    {
+        XCIFile archivoXCI;
+        decimal bytesAnteriores;
+        public FormCortando(Stream archivoOriginal, FileInfo infoOriginal, long cutterSize)
+        {
+            InitializeComponent();
+            bytesAnteriores = 0;
+            archivoXCI = new XCIFile(archivoOriginal, infoOriginal, cutterSize);
+            this.Text = "Cortando " + archivoXCI.soloNombre;
+            pbArchivos.Maximum = archivoXCI.partesACortar;
+            lblArchivos.Text = string.Format("{0} partes de {1}", pbArchivos.Value, archivoXCI.partesACortar);
+            lblArchivos.Location = new System.Drawing.Point(this.Width - 20 - lblArchivos.Width, lblArchivos.Location.Y);
+            lblBytesLeidos.Text = string.Format("{0}/{1} GB", 0, (Convert.ToDecimal(cutterSize)/ 1024/1024/1024).ToString("0.00"));
+            lblBytesLeidos.Location = new System.Drawing.Point(this.Width - 20 - lblBytesLeidos.Width, lblBytesLeidos.Location.Y);
+        }
+
+        private void FormCortando_Load(object sender, EventArgs e)
+        {
+            bwCortar.RunWorkerAsync();
+            tmUpdateBytes.Enabled = true;
+        }
+
+        private void tmUpdateBytes_Tick(object sender, EventArgs e)
+        {
+            tmUpdateBytes.Enabled = false;
+            pbBytesLeidos.Value = archivoXCI.progresoActual;
+            decimal bytes = Convert.ToDecimal(archivoXCI.bytesLeidos);
+            decimal bytesPorSegundo = 0;
+            string porSegundo = "";
+            string poner = "";
+            
+            
+            if(bytes > 1073741824)
+            {
+                poner = (bytes / 1024 / 1024 / 1024).ToString("0.00") + " GB";
+            }
+            else if(bytes > 1048576)
+            {
+                poner = (bytes / 1024 / 1024).ToString("0.00") + " MB";
+            }
+            else if (bytes > 1024)
+            {
+                poner = (bytes / 1024).ToString("0.00") + " KB";
+            }
+            bytesPorSegundo = bytes - bytesAnteriores;
+
+            if (bytesPorSegundo > 1073741824)
+            {
+                porSegundo = (bytesPorSegundo / 1024 / 1024 / 1024).ToString("0.00") + " GB/s";
+            }
+            else if (bytesPorSegundo > 1048576)
+            {
+                porSegundo = (bytesPorSegundo / 1024 / 1024).ToString("0.00") + " MB/s";
+            }
+            else if (bytesPorSegundo > 1024)
+            {
+                porSegundo = (bytesPorSegundo / 1024).ToString("0.00") + " KB/s";
+            }
+
+            lblBytesLeidos.Text = string.Format("Vel: {0} - {1}/{2} GB", porSegundo, poner, (Convert.ToDecimal(archivoXCI.cutterActual)/1024/1024/1024).ToString("0.00"));
+            lblBytesLeidos.Location = new System.Drawing.Point(this.Width - 20 - lblBytesLeidos.Width, lblBytesLeidos.Location.Y);
+            bytesAnteriores = bytes;
+            this.Refresh();
+            tmUpdateBytes.Enabled = true;
+        }
+
+        private void bwCortar_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            XCICutter.cutterParts(archivoXCI,bwCortar);
+        }
+
+        private void bwCortar_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        {
+            pbArchivos.Value = e.ProgressPercentage;
+            lblArchivos.Text = string.Format("{0} partes de {1}", pbArchivos.Value, archivoXCI.partesACortar);
+            lblArchivos.Location = new System.Drawing.Point(this.Width - 20 - lblArchivos.Width, lblArchivos.Location.Y);
+            archivoXCI.bytesLeidos = 0;
+            bytesAnteriores = 0;
+            lblBytesLeidos.Text = string.Format("{0}/{1}", pbBytesLeidos.Value, archivoXCI.cutterActual);
+            lblBytesLeidos.Location = new System.Drawing.Point(this.Width - 20 - lblBytesLeidos.Width, lblBytesLeidos.Location.Y);
+            this.Refresh();
+        }
+
+        private void bwCortar_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            this.Close();
+        }
+    }
+}

@@ -177,7 +177,7 @@ namespace NSCB_GUI
             proeso.StartInfo.FileName = "cmd.exe";
             proeso.StartInfo.Arguments = string.Format("/c NSCB.bat 1 1 {0} {1} {2}", comboBox1.SelectedIndex + 1, cbParchar.Checked ? 1 : 0, cbFirware.SelectedIndex);
             AgregarJuegosALaListaa("list.txt");
-            FormProgreso formProgreso = new FormProgreso("Convirtiendo...", proeso);
+            FormProgreso formProgreso = new FormProgreso("Convirtiendo...", proeso, cbApagar.Checked, cbSplit.Checked);
             if (formProgreso.ShowDialog() == DialogResult.OK)
                 completado(null, null);
         }
@@ -197,7 +197,7 @@ namespace NSCB_GUI
             proeso.StartInfo.Arguments = string.Format("/c NSCB.bat 2 1 {0} {1} {2} {3}", comboBox1.SelectedIndex + 1, cbParchar.Checked ? 1 : 0, cbFirware.SelectedIndex, nombreFinal);
             if (directorios.Count == 0)
                 AgregarJuegosALaListaa("mlist.txt");
-            FormProgreso formProgreso = new FormProgreso("Empaquetando...", proeso, panelJuegos.Controls);
+            FormProgreso formProgreso = new FormProgreso("Empaquetando...", proeso, cbApagar.Checked, cbSplit.Checked, directorios.Count > 0 ? panelJuegos.Controls : null);
             if(formProgreso.ShowDialog() == DialogResult.OK)
                 completado(null, null);
         }
@@ -257,20 +257,23 @@ namespace NSCB_GUI
                 {
                     File.Delete("mlist.txt");
                 }
-                Process carpeta = new Process();
-                carpeta.StartInfo.FileName = "explorer.exe";
-                carpeta.StartInfo.Arguments = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\NSCB_output";
-                carpeta.Start();
-                panelJuegos.Controls.Clear();
-                juegos.Clear();
-                directorios.Clear();
-                if(cbApagar.Checked)
+                if (cbApagar.Checked)
                 {
                     Process shutdown = new Process();
                     ProcessStartInfo modulo = new ProcessStartInfo("C:\\WINDOWS\\SYSTEM32\\SHUTDOWN.EXE");
                     modulo.Arguments = " -s -t 0";
                     shutdown.StartInfo = modulo;
                     shutdown.Start();
+                }
+                else
+                {
+                    Process carpeta = new Process();
+                    carpeta.StartInfo.FileName = "explorer.exe";
+                    carpeta.StartInfo.Arguments = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\NSCB_output";
+                    carpeta.Start();
+                    juegos.Clear();
+                    directorios.Clear();
+                    panelJuegos.Controls.Clear();
                 }
             }
         }
@@ -286,7 +289,19 @@ namespace NSCB_GUI
 
         private void cbParchar_CheckedChanged(object sender, EventArgs e)
         {
-            cbFirware.Enabled = cbParchar.Checked;
+            cbFirware.Visible = cbParchar.Checked;
+            metroLabel2.Visible = cbParchar.Checked;
+        }
+
+        private void btnCortar_Click(object sender, EventArgs e)
+        {
+            if(juegos.Count > 0)
+            {
+                foreach(string juego in juegos)
+                {
+                    XCICutter.cutter(Path.GetDirectoryName(juego));
+                }
+            }
         }
     }
 }

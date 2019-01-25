@@ -13,19 +13,24 @@ namespace NSCB_GUI
 {
     public partial class FormProgreso : MetroForm
     {
+        bool apagar = false;
+        bool cancelado = false;
+        bool cortar = false;
         private Process convertirEmpaquetar;
         Random randomTipoDiversion = new Random();
         Random randomNumeroDiversion = new Random();
-        bool cancelado = false;
         string argumentosFinales = "";
         string juegoActual = "";
+        
         Control.ControlCollection controles;
-        public FormProgreso(string title, Process proceso, Control.ControlCollection directorios = null)
+        public FormProgreso(string title, Process proceso, bool apagado, bool cortado, Control.ControlCollection directorios = null)
         {
             InitializeComponent();
             convertirEmpaquetar = proceso;
             Text = title;
             ServicePointManager.Expect100Continue = true;
+            apagar = apagado;
+            cortar = cortado;
             controles = directorios;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
         }
@@ -47,13 +52,6 @@ namespace NSCB_GUI
 
         private void PreparaComienzo()
         {
-            if (controles != null && controles.Count > 0)
-            {
-                if (!cancelado)
-                {
-                    
-                }
-            }
             procesoConversion.RunWorkerAsync();
         }
 
@@ -72,7 +70,6 @@ namespace NSCB_GUI
                 }
 
                 convertirEmpaquetar.WaitForExit();
-                
             }
             else
             {
@@ -97,6 +94,7 @@ namespace NSCB_GUI
                         }
                         procesoConversion.ReportProgress(1);
                         convertirEmpaquetar.WaitForExit();
+                        //XCICutter.cutter(juegoActual);
                     }
                     procesoConversion.ReportProgress(2);
                 }
@@ -142,7 +140,9 @@ namespace NSCB_GUI
             }
             else
             {
-                MetroMessageBox.Show(this, "En hora buena esto ha terminado.", "", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                if(!apagar)
+                    MetroMessageBox.Show(this, "En hora buena esto ha terminado.", "", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
                 DialogResult = DialogResult.OK;
                 Close();
             }
