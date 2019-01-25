@@ -36,6 +36,7 @@ namespace NSCB_GUI
             panelJuegos.Height = this.Height - 195;
             botonEmpaquetar.Location = new Point(this.Width - 97, this.Height - 42);
             botonConvertir.Location = new Point(this.Width - 178, botonEmpaquetar.Location.Y);
+            btnCortar.Location = new Point(this.Width - 260, botonEmpaquetar.Location.Y);
             btnDependencias.Location = new Point(btnDependencias.Location.X, botonEmpaquetar.Location.Y);
             metroLabel1.Location = new Point(this.Width - 164, metroLabel1.Location.Y);
             comboBox1.Location = new Point(this.Width - 97, comboBox1.Location.Y);
@@ -300,6 +301,14 @@ namespace NSCB_GUI
                 foreach(string juego in juegos)
                 {
                     XCICutter.cutter(Path.GetDirectoryName(juego));
+                }
+            }
+
+            if(directorios.Count > 0)
+            {
+                foreach (string directorio in directorios)
+                {
+                    XCICutter.cutter(directorio);
                 }
             }
         }

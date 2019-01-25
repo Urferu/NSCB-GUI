@@ -21,7 +21,7 @@ namespace NSCB_GUI
         Random randomNumeroDiversion = new Random();
         string argumentosFinales = "";
         string juegoActual = "";
-        
+
         Control.ControlCollection controles;
         public FormProgreso(string title, Process proceso, bool apagado, bool cortado, Control.ControlCollection directorios = null)
         {
@@ -37,7 +37,7 @@ namespace NSCB_GUI
 
         private void FormProgreso_Load(object sender, System.EventArgs e)
         {
-            if(controles != null && controles.Count > 0)
+            if (controles != null && controles.Count > 0)
             {
                 pbProgreso.Visible = true;
                 lblProceso.Visible = true;
@@ -70,6 +70,15 @@ namespace NSCB_GUI
                 }
 
                 convertirEmpaquetar.WaitForExit();
+                if (cortar)
+                {
+                    DirectoryInfo dir = new DirectoryInfo(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\NSCB_output");
+                    DirectoryInfo[] directs = dir.GetDirectories();
+                    foreach(DirectoryInfo direct in directs)
+                    {
+                        XCICutter.cutter(direct.FullName);
+                    }
+                }
             }
             else
             {
@@ -94,7 +103,10 @@ namespace NSCB_GUI
                         }
                         procesoConversion.ReportProgress(1);
                         convertirEmpaquetar.WaitForExit();
-                        //XCICutter.cutter(juegoActual);
+                        if (cortar)
+                        {
+                            XCICutter.cutter(juegoActual);
+                        }
                     }
                     procesoConversion.ReportProgress(2);
                 }

@@ -171,6 +171,7 @@
   <ItemGroup>
     <Content Include="MetroFramework.txt" />
     <Content Include="NSCBIcon.ico" />
+    <None Include="Resources\Novedad-6.png" />
     <None Include="Resources\Novedad-5.png" />
     <None Include="Resources\Novedad-4.png" />
     <None Include="Resources\Novedad-3.png" />

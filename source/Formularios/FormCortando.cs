@@ -10,6 +10,7 @@ namespace NSCB_GUI
     {
         XCIFile archivoXCI;
         decimal bytesAnteriores;
+        string porSegundo;
         public FormCortando(Stream archivoOriginal, FileInfo infoOriginal, long cutterSize)
         {
             InitializeComponent();
@@ -26,6 +27,7 @@ namespace NSCB_GUI
         private void FormCortando_Load(object sender, EventArgs e)
         {
             bwCortar.RunWorkerAsync();
+            tmVelocidad.Enabled = true;
             tmUpdateBytes.Enabled = true;
         }
 
@@ -34,7 +36,6 @@ namespace NSCB_GUI
             tmUpdateBytes.Enabled = false;
             pbBytesLeidos.Value = archivoXCI.progresoActual;
             decimal bytes = Convert.ToDecimal(archivoXCI.bytesLeidos);
-            decimal bytesPorSegundo = 0;
             string porSegundo = "";
             string poner = "";
             
@@ -51,26 +52,32 @@ namespace NSCB_GUI
             {
                 poner = (bytes / 1024).ToString("0.00") + " KB";
             }
-            bytesPorSegundo = bytes - bytesAnteriores;
-
-            if (bytesPorSegundo > 1073741824)
-            {
-                porSegundo = (bytesPorSegundo / 1024 / 1024 / 1024).ToString("0.00") + " GB/s";
-            }
-            else if (bytesPorSegundo > 1048576)
-            {
-                porSegundo = (bytesPorSegundo / 1024 / 1024).ToString("0.00") + " MB/s";
-            }
-            else if (bytesPorSegundo > 1024)
-            {
-                porSegundo = (bytesPorSegundo / 1024).ToString("0.00") + " KB/s";
-            }
+            
 
             lblBytesLeidos.Text = string.Format("Vel: {0} - {1}/{2} GB", porSegundo, poner, (Convert.ToDecimal(archivoXCI.cutterActual)/1024/1024/1024).ToString("0.00"));
             lblBytesLeidos.Location = new System.Drawing.Point(this.Width - 20 - lblBytesLeidos.Width, lblBytesLeidos.Location.Y);
-            bytesAnteriores = bytes;
             this.Refresh();
             tmUpdateBytes.Enabled = true;
+        }
+
+        private void tmVelocidad_Tick(object sender, EventArgs e)
+        {
+            decimal bytes = Convert.ToDecimal(archivoXCI.bytesLeidos);
+            decimal velocidad = bytes - bytesAnteriores / 2;
+
+            if (velocidad > 1073741824)
+            {
+                porSegundo = (velocidad / 1024 / 1024 / 1024).ToString("0.00") + " GB/s";
+            }
+            else if (velocidad > 1048576)
+            {
+                porSegundo = (velocidad / 1024 / 1024).ToString("0.00") + " MB/s";
+            }
+            else if (velocidad > 1024)
+            {
+                porSegundo = (velocidad / 1024).ToString("0.00") + " KB/s";
+            }
+            bytesAnteriores = bytes;
         }
 
         private void bwCortar_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
@@ -83,16 +90,23 @@ namespace NSCB_GUI
             pbArchivos.Value = e.ProgressPercentage;
             lblArchivos.Text = string.Format("{0} partes de {1}", pbArchivos.Value, archivoXCI.partesACortar);
             lblArchivos.Location = new System.Drawing.Point(this.Width - 20 - lblArchivos.Width, lblArchivos.Location.Y);
-            archivoXCI.bytesLeidos = 0;
+            pbBytesLeidos.Value = 0;
             bytesAnteriores = 0;
-            lblBytesLeidos.Text = string.Format("{0}/{1}", pbBytesLeidos.Value, archivoXCI.cutterActual);
+            lblBytesLeidos.Text = string.Format("{0} B/{1} GB", bytesAnteriores, (Convert.ToDecimal(archivoXCI.cutterActual) / 1024 / 1024 / 1024).ToString("0.00"));
             lblBytesLeidos.Location = new System.Drawing.Point(this.Width - 20 - lblBytesLeidos.Width, lblBytesLeidos.Location.Y);
             this.Refresh();
         }
 
         private void bwCortar_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
+            tmUpdateBytes.Enabled = false;
+            tmVelocidad.Enabled = false;
             this.Close();
+        }
+
+        private void botonCancelar_Click(object sender, EventArgs e)
+        {
+            archivoXCI.cancelar = true;
         }
     }
 }

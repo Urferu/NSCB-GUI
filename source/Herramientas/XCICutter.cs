@@ -8,7 +8,6 @@ namespace NSCB_GUI
     {
         public static void cutter(string inPath)
         {
-            decimal partes = 0;
             long cutterSize = 4294934528;
             Stream srOriginal;
             DirectoryInfo info = new DirectoryInfo(inPath);
@@ -28,7 +27,7 @@ namespace NSCB_GUI
         public static void cutterParts(XCIFile archivoXCI, BackgroundWorker bwCutter)
         {
             Stream srDestino;
-            for (int indice = 0; indice < archivoXCI.partesACortar; indice++)
+            for (int indice = 0; indice < archivoXCI.partesACortar && !archivoXCI.cancelar; indice++)
             {
                 if (archivoXCI.cutterActual > 0)
                 {
@@ -46,12 +45,12 @@ namespace NSCB_GUI
 
         private static void writePartCutter(XCIFile archivoXCI, Stream srDestino)
         {
-            byte[] buffer = new byte[256];
+            byte[] buffer = new byte[512];
             int leidos = 0;
-            for (archivoXCI.bytesLeidos = 0; archivoXCI.bytesLeidos < archivoXCI.cutterActual; archivoXCI.bytesLeidos += leidos)
+            for (archivoXCI.bytesLeidos = 0; archivoXCI.bytesLeidos < archivoXCI.cutterActual && !archivoXCI.cancelar; archivoXCI.bytesLeidos += leidos)
             {
                 leidos = archivoXCI.LeerBytes(ref buffer);
-                if(leidos < 256)
+                if(leidos < 512)
                 {
                     Array.Resize<byte>(ref buffer, leidos);
                 }

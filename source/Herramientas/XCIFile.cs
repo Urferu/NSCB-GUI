@@ -5,6 +5,7 @@ namespace NSCB_GUI
 {
     class XCIFile
     {
+        public bool cancelar;
         Stream srOriginal;
         FileInfo fiOriginal;
         long splitSize;
@@ -81,7 +82,7 @@ namespace NSCB_GUI
         {
             get
             {
-                int valueCalis = Convert.ToInt32((Convert.ToDecimal(bytesDeParte) / Convert.ToDecimal(splitNow)) * 100);
+                int valueCalis = splitNow > 0 ? Convert.ToInt32((Convert.ToDecimal(bytesDeParte) / Convert.ToDecimal(splitNow)) * 100) : 0;
                 return valueCalis;
             }
         }
@@ -100,6 +101,7 @@ namespace NSCB_GUI
 
         public XCIFile(Stream archivoOriginal, FileInfo infoOriginal, long cutterSize)
         {
+            cancelar = false;
             srOriginal = archivoOriginal;
             fiOriginal = infoOriginal;
             splitSize = cutterSize;
