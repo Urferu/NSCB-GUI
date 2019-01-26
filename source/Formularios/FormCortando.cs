@@ -36,7 +36,6 @@ namespace NSCB_GUI
             tmUpdateBytes.Enabled = false;
             pbBytesLeidos.Value = archivoXCI.progresoActual;
             decimal bytes = Convert.ToDecimal(archivoXCI.bytesLeidos);
-            string porSegundo = "";
             string poner = "";
             
             
@@ -63,7 +62,7 @@ namespace NSCB_GUI
         private void tmVelocidad_Tick(object sender, EventArgs e)
         {
             decimal bytes = Convert.ToDecimal(archivoXCI.bytesLeidos);
-            decimal velocidad = bytes - bytesAnteriores / 2;
+            decimal velocidad = (bytes - bytesAnteriores) / 2;
 
             if (velocidad > 1073741824)
             {

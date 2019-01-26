@@ -311,6 +311,9 @@ namespace NSCB_GUI
                     XCICutter.cutter(directorio);
                 }
             }
+            juegos.Clear();
+            directorios.Clear();
+            panelJuegos.Controls.Clear();
         }
     }
 }

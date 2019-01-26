@@ -38,11 +38,11 @@
             this.comboBox1 = new MetroFramework.Controls.MetroComboBox();
             this.cbFirware = new MetroFramework.Controls.MetroComboBox();
             this.cbApagar = new MetroFramework.Controls.MetroCheckBox();
+            this.cbSplit = new MetroFramework.Controls.MetroCheckBox();
+            this.btnCortar = new MetroFramework.Controls.MetroButton();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.cbParchar = new MetroFramework.Controls.MetroCheckBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.cbSplit = new MetroFramework.Controls.MetroCheckBox();
-            this.btnCortar = new MetroFramework.Controls.MetroButton();
             this.SuspendLayout();
             // 
             // lblArrastre
@@ -158,8 +158,32 @@
             this.cbApagar.Size = new System.Drawing.Size(117, 15);
             this.cbApagar.TabIndex = 10;
             this.cbApagar.Text = "Apagar al finalizar";
-            this.toltipArrastre.SetToolTip(this.cbApagar, "Apaga el sistema al finalizar la tarea solicitada.");
+            this.toltipArrastre.SetToolTip(this.cbApagar, "Apaga el sistema al finalizar la tarea solicitada.\r\n(Si algún archivo se encuentr" +
+        "a dañado la app\r\npuede quedar congelada y la pc no se apagará)");
             this.cbApagar.UseSelectable = true;
+            // 
+            // cbSplit
+            // 
+            this.cbSplit.AutoSize = true;
+            this.cbSplit.Location = new System.Drawing.Point(23, 80);
+            this.cbSplit.Name = "cbSplit";
+            this.cbSplit.Size = new System.Drawing.Size(70, 15);
+            this.cbSplit.TabIndex = 12;
+            this.cbSplit.Text = "4GB Split";
+            this.toltipArrastre.SetToolTip(this.cbSplit, "Cortar el archivo o archivos resultantes\r\nen archivos de 4GB para unidades FAT32." +
+        "\r\n(Solo funciona con xci)");
+            this.cbSplit.UseSelectable = true;
+            // 
+            // btnCortar
+            // 
+            this.btnCortar.Location = new System.Drawing.Point(181, 348);
+            this.btnCortar.Name = "btnCortar";
+            this.btnCortar.Size = new System.Drawing.Size(75, 23);
+            this.btnCortar.TabIndex = 13;
+            this.btnCortar.Text = "Cortar";
+            this.toltipArrastre.SetToolTip(this.btnCortar, "Convierte los juegos agregados");
+            this.btnCortar.UseSelectable = true;
+            this.btnCortar.Click += new System.EventHandler(this.btnCortar_Click);
             // 
             // metroLabel1
             // 
@@ -192,29 +216,6 @@
             this.metroLabel2.TabIndex = 8;
             this.metroLabel2.Text = "Firmware patch:";
             this.metroLabel2.Visible = false;
-            // 
-            // cbSplit
-            // 
-            this.cbSplit.AutoSize = true;
-            this.cbSplit.Location = new System.Drawing.Point(23, 80);
-            this.cbSplit.Name = "cbSplit";
-            this.cbSplit.Size = new System.Drawing.Size(70, 15);
-            this.cbSplit.TabIndex = 12;
-            this.cbSplit.Text = "4GB Split";
-            this.toltipArrastre.SetToolTip(this.cbSplit, "Cortar el archivo o archivos resultantes\r\nen archivos de 4GB para unidades FAT32." +
-        "\r\n(Solo funciona con xci)");
-            this.cbSplit.UseSelectable = true;
-            // 
-            // btnCortar
-            // 
-            this.btnCortar.Location = new System.Drawing.Point(181, 348);
-            this.btnCortar.Name = "btnCortar";
-            this.btnCortar.Size = new System.Drawing.Size(75, 23);
-            this.btnCortar.TabIndex = 13;
-            this.btnCortar.Text = "Cortar";
-            this.toltipArrastre.SetToolTip(this.btnCortar, "Convierte los juegos agregados");
-            this.btnCortar.UseSelectable = true;
-            this.btnCortar.Click += new System.EventHandler(this.btnCortar_Click);
             // 
             // Form1
             // 
