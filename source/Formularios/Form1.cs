@@ -37,7 +37,6 @@ namespace NSCB_GUI
             botonEmpaquetar.Location = new Point(this.Width - 97, this.Height - 42);
             botonConvertir.Location = new Point(this.Width - 178, botonEmpaquetar.Location.Y);
             btnCortar.Location = new Point(this.Width - 260, botonEmpaquetar.Location.Y);
-            btnDependencias.Location = new Point(btnDependencias.Location.X, botonEmpaquetar.Location.Y);
             metroLabel1.Location = new Point(this.Width - 164, metroLabel1.Location.Y);
             comboBox1.Location = new Point(this.Width - 97, comboBox1.Location.Y);
             metroLabel2.Location = new Point(this.Width - 273, metroLabel2.Location.Y);
@@ -277,15 +276,6 @@ namespace NSCB_GUI
                     panelJuegos.Controls.Clear();
                 }
             }
-        }
-
-        private void btnDependencias_Click(object sender, EventArgs e)
-        {
-            Process proeso = new Process();
-            proeso.StartInfo.FileName = "install_dependencies.bat";
-            proeso.EnableRaisingEvents = true;
-            proeso.Start();
-            proeso.WaitForExit();
         }
 
         private void cbParchar_CheckedChanged(object sender, EventArgs e)

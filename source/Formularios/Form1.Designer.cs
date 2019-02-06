@@ -34,7 +34,6 @@
             this.botonEmpaquetar = new MetroFramework.Controls.MetroButton();
             this.panelJuegos = new MetroFramework.Controls.MetroPanel();
             this.toltipArrastre = new MetroFramework.Components.MetroToolTip();
-            this.btnDependencias = new MetroFramework.Controls.MetroButton();
             this.comboBox1 = new MetroFramework.Controls.MetroComboBox();
             this.cbFirware = new MetroFramework.Controls.MetroComboBox();
             this.cbApagar = new MetroFramework.Controls.MetroCheckBox();
@@ -102,17 +101,6 @@
             this.toltipArrastre.Style = MetroFramework.MetroColorStyle.Blue;
             this.toltipArrastre.StyleManager = null;
             this.toltipArrastre.Theme = MetroFramework.MetroThemeStyle.Light;
-            // 
-            // btnDependencias
-            // 
-            this.btnDependencias.Location = new System.Drawing.Point(23, 348);
-            this.btnDependencias.Name = "btnDependencias";
-            this.btnDependencias.Size = new System.Drawing.Size(126, 23);
-            this.btnDependencias.TabIndex = 0;
-            this.btnDependencias.Text = "Instalar dependencias";
-            this.toltipArrastre.SetToolTip(this.btnDependencias, "Instala las dependencias necesarias\r\npara las conversiones.");
-            this.btnDependencias.UseSelectable = true;
-            this.btnDependencias.Click += new System.EventHandler(this.btnDependencias_Click);
             // 
             // comboBox1
             // 
@@ -231,7 +219,6 @@
             this.Controls.Add(this.cbParchar);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.metroLabel1);
-            this.Controls.Add(this.btnDependencias);
             this.Controls.Add(this.panelJuegos);
             this.Controls.Add(this.botonEmpaquetar);
             this.Controls.Add(this.botonConvertir);
@@ -251,7 +238,6 @@
         private MetroFramework.Controls.MetroButton botonEmpaquetar;
         private MetroFramework.Controls.MetroPanel panelJuegos;
         private MetroFramework.Components.MetroToolTip toltipArrastre;
-        private MetroFramework.Controls.MetroButton btnDependencias;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroComboBox comboBox1;
         private MetroFramework.Controls.MetroCheckBox cbParchar;
