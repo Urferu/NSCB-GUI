@@ -52,15 +52,18 @@
             this.txtNombreFinal.MaxLength = 32767;
             this.txtNombreFinal.Name = "txtNombreFinal";
             this.txtNombreFinal.PasswordChar = '\0';
-            this.txtNombreFinal.WaterMark = "Nombre Final del Juego";
+            this.txtNombreFinal.PromptText = "Nombre Final del Juego";
             this.txtNombreFinal.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtNombreFinal.SelectedText = "";
             this.txtNombreFinal.SelectionLength = 0;
             this.txtNombreFinal.SelectionStart = 0;
             this.txtNombreFinal.ShortcutsEnabled = true;
             this.txtNombreFinal.Size = new System.Drawing.Size(452, 20);
+            this.txtNombreFinal.Style = MetroFramework.MetroColorStyle.Silver;
             this.txtNombreFinal.TabIndex = 0;
+            this.txtNombreFinal.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.txtNombreFinal.UseSelectable = true;
+            this.txtNombreFinal.WaterMark = "Nombre Final del Juego";
             this.txtNombreFinal.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtNombreFinal.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
@@ -69,8 +72,10 @@
             this.botonAceptar.Location = new System.Drawing.Point(212, 89);
             this.botonAceptar.Name = "botonAceptar";
             this.botonAceptar.Size = new System.Drawing.Size(75, 23);
+            this.botonAceptar.Style = MetroFramework.MetroColorStyle.Silver;
             this.botonAceptar.TabIndex = 2;
             this.botonAceptar.Text = "Aceptar";
+            this.botonAceptar.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.botonAceptar.UseSelectable = true;
             this.botonAceptar.Click += new System.EventHandler(this.botonAceptar_Click);
             // 
@@ -83,7 +88,9 @@
             this.Controls.Add(this.txtNombreFinal);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmNombreEmpaquetado";
+            this.Style = MetroFramework.MetroColorStyle.Silver;
             this.Text = "Capture el nombre del archivo sin extensión";
+            this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.ResumeLayout(false);
 
         }

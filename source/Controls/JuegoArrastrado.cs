@@ -46,6 +46,7 @@ namespace NSCB_GUI.Controls
         {
             InitializeComponent();
             quitarJuego.BringToFront();
+            btnMostrarInfoGame.BringToFront();
             indiceJuego = 0;
             ubicacionJuego = "";
             borrarIndice = metodoBorrar;
@@ -56,9 +57,19 @@ namespace NSCB_GUI.Controls
             borrarIndice(indiceJuego);
         }
 
+        private void btnMostrarInfoGame_Click(object sender, System.EventArgs e)
+        {
+            System.Diagnostics.Process infoGame = new System.Diagnostics.Process();
+            infoGame.StartInfo = new System.Diagnostics.ProcessStartInfo(System.Environment.CurrentDirectory + "\\ztools\\XCI-Explorer.exe", $"\"{ubicacionJuegoLocal}\"");
+            infoGame.StartInfo.UseShellExecute = false;
+            infoGame.Start();
+            infoGame.WaitForExit();
+        }
+
         private void JuegoArrastrado_Resize(object sender, System.EventArgs e)
         {
             quitarJuego.Location = new System.Drawing.Point(this.Width - 30, quitarJuego.Location.Y);
+            btnMostrarInfoGame.Location = new System.Drawing.Point(this.Width - 60, quitarJuego.Location.Y);
         }
     }
 }

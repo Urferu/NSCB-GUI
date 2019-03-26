@@ -57,7 +57,9 @@
             this.MinimizeBox = false;
             this.Name = "NovedadesForm";
             this.Resizable = false;
+            this.Style = MetroFramework.MetroColorStyle.Silver;
             this.Text = "Novedades";
+            this.Theme = MetroFramework.MetroThemeStyle.Dark;
             ((System.ComponentModel.ISupportInitialize)(this.pbNovedad)).EndInit();
             this.ResumeLayout(false);
 

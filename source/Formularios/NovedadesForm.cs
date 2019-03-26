@@ -23,10 +23,10 @@ namespace NSCB_GUI
                 case 1:
                     pbNovedad.Image = Properties.Resources.Novedad_1;
                     break;
-                //case 2:
-                //    pbNovedad.Image = Properties.Resources.Novedad_2;
-                //    break;
-                //case 3:
+                case 2:
+                    pbNovedad.Image = Properties.Resources.Novedad_2;
+                    break;
+                case 3:
                 //    pbNovedad.Image = Properties.Resources.Novedad_3;
                 //    break;
                 //case 4:
@@ -36,8 +36,8 @@ namespace NSCB_GUI
                 //    pbNovedad.Image = Properties.Resources.Novedad_5;
                 //    break;
                 //case 6:
-                //    pbNovedad.Image = Properties.Resources.Novedad_6;
-                //    break;
+                    pbNovedad.Image = Properties.Resources.Novedad_6;
+                    break;
                 default:
                     this.Close();
                     break;

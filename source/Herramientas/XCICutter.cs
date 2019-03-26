@@ -45,12 +45,12 @@ namespace NSCB_GUI
 
         private static void writePartCutter(XCIFile archivoXCI, Stream srDestino)
         {
-            byte[] buffer = new byte[512];
+            byte[] buffer = new byte[128];
             int leidos = 0;
             for (archivoXCI.bytesLeidos = 0; archivoXCI.bytesLeidos < archivoXCI.cutterActual && !archivoXCI.cancelar; archivoXCI.bytesLeidos += leidos)
             {
                 leidos = archivoXCI.LeerBytes(ref buffer);
-                if(leidos < 512)
+                if(leidos < 128)
                 {
                     Array.Resize<byte>(ref buffer, leidos);
                 }

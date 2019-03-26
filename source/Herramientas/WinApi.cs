@@ -1,9 +1,13 @@
 ﻿using System;
 using System.IO;
+using MetroFramework;
+using MetroFramework.Forms;
+using System.ComponentModel;
+using MetroFramework.Components;
 
 namespace NSCB_GUI
 {
-    public class WinApi
+    public static class WinApi
     {
         // Hace que una ventana sea hija (o esté contenida) en otra
         [System.Runtime.InteropServices.DllImport("user32.dll")]

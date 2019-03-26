@@ -14,13 +14,14 @@ namespace NSCB_GUI
     {
         List<string> juegos;
         List<string> directorios;
+
         public Form1()
         {
             juegos = new List<string>();
             directorios = new List<string>();
             InitializeComponent();
             comboBox1.SelectedIndex = 2;
-            cbFirware.SelectedIndex = 7;
+            cbFirware.SelectedIndex = 8;
             if(!File.Exists("novedad.dat"))
             {
                 NovedadesForm novedades = new NovedadesForm();

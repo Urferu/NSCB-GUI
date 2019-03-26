@@ -53,7 +53,9 @@
             this.MinimizeBox = false;
             this.Name = "MemesForm";
             this.Resizable = false;
+            this.Style = MetroFramework.MetroColorStyle.Silver;
             this.Text = "MEME";
+            this.Theme = MetroFramework.MetroThemeStyle.Dark;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
