@@ -103,12 +103,12 @@ namespace NSCB_GUI
                         }
                         procesoConversion.ReportProgress(1);
                         convertirEmpaquetar.WaitForExit();
-                        if (cortar)
-                        {
-                            XCICutter.cutter(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\NSCB_output\\"+juegoActual);
-                        }
                     }
                     procesoConversion.ReportProgress(2);
+                }
+                if (cortar)
+                {
+                    XCICutter.cutter(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\NSCB_output");
                 }
             }
         }
