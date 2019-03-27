@@ -49,10 +49,10 @@
             this.quitarJuego.Location = new System.Drawing.Point(359, 5);
             this.quitarJuego.Name = "quitarJuego";
             this.quitarJuego.Size = new System.Drawing.Size(27, 23);
-            this.quitarJuego.Style = MetroFramework.MetroColorStyle.Silver;
+            this.quitarJuego.Style = MetroFramework.MetroColorStyle.Blue;
             this.quitarJuego.TabIndex = 1;
             this.quitarJuego.Text = "X";
-            this.quitarJuego.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.quitarJuego.Theme = MetroFramework.MetroThemeStyle.Light;
             this.toolTip1.SetToolTip(this.quitarJuego, "Quitar juego");
             this.quitarJuego.UseSelectable = true;
             this.quitarJuego.Click += new System.EventHandler(this.quitarJuego_Click);
@@ -62,23 +62,23 @@
             this.btnMostrarInfoGame.Location = new System.Drawing.Point(339, 5);
             this.btnMostrarInfoGame.Name = "btnMostrarInfoGame";
             this.btnMostrarInfoGame.Size = new System.Drawing.Size(27, 23);
-            this.btnMostrarInfoGame.Style = MetroFramework.MetroColorStyle.Silver;
+            this.btnMostrarInfoGame.Style = MetroFramework.MetroColorStyle.Blue;
             this.btnMostrarInfoGame.TabIndex = 2;
             this.btnMostrarInfoGame.Text = "?";
-            this.btnMostrarInfoGame.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.btnMostrarInfoGame.Theme = MetroFramework.MetroThemeStyle.Light;
             this.toolTip1.SetToolTip(this.btnMostrarInfoGame, "Game Info");
             this.btnMostrarInfoGame.UseSelectable = true;
             this.btnMostrarInfoGame.Click += new System.EventHandler(this.btnMostrarInfoGame_Click);
             // 
             // toolTip1
             // 
-            this.toolTip1.Style = MetroFramework.MetroColorStyle.Silver;
+            this.toolTip1.Style = MetroFramework.MetroColorStyle.Blue;
             this.toolTip1.StyleManager = null;
-            this.toolTip1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.toolTip1.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
             // JuegoArrastrado
             // 
-            this.BackColor = System.Drawing.Color.Silver;
+            this.BackColor = System.Drawing.Color.Aquamarine;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.lblQuitarJuego);
             this.Controls.Add(this.quitarJuego);

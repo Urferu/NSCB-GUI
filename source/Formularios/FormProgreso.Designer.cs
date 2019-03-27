@@ -41,10 +41,10 @@
             this.botonConvertir.Location = new System.Drawing.Point(575, 389);
             this.botonConvertir.Name = "botonConvertir";
             this.botonConvertir.Size = new System.Drawing.Size(75, 23);
-            this.botonConvertir.Style = MetroFramework.MetroColorStyle.Silver;
+            this.botonConvertir.Style = MetroFramework.MetroColorStyle.Blue;
             this.botonConvertir.TabIndex = 7;
             this.botonConvertir.Text = "Cancelar";
-            this.botonConvertir.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.botonConvertir.Theme = MetroFramework.MetroThemeStyle.Light;
             this.botonConvertir.UseSelectable = true;
             this.botonConvertir.Click += new System.EventHandler(this.botonConvertir_Click);
             // 
@@ -53,10 +53,10 @@
             this.metroButton1.Location = new System.Drawing.Point(476, 389);
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.Size = new System.Drawing.Size(93, 23);
-            this.metroButton1.Style = MetroFramework.MetroColorStyle.Silver;
+            this.metroButton1.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroButton1.TabIndex = 8;
             this.metroButton1.Text = "Ya me aburrí";
-            this.metroButton1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroButton1.Theme = MetroFramework.MetroThemeStyle.Light;
             this.metroButton1.UseSelectable = true;
             this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
@@ -90,10 +90,10 @@
             this.lblProceso.Location = new System.Drawing.Point(271, 392);
             this.lblProceso.Name = "lblProceso";
             this.lblProceso.Size = new System.Drawing.Size(28, 19);
-            this.lblProceso.Style = MetroFramework.MetroColorStyle.Silver;
+            this.lblProceso.Style = MetroFramework.MetroColorStyle.Blue;
             this.lblProceso.TabIndex = 11;
             this.lblProceso.Text = "1/1";
-            this.lblProceso.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.lblProceso.Theme = MetroFramework.MetroThemeStyle.Light;
             this.lblProceso.Visible = false;
             // 
             // FormProgreso
@@ -111,9 +111,7 @@
             this.MinimizeBox = false;
             this.Name = "FormProgreso";
             this.Resizable = false;
-            this.Style = MetroFramework.MetroColorStyle.Silver;
             this.Text = "Convirtiendo...";
-            this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.Load += new System.EventHandler(this.FormProgreso_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

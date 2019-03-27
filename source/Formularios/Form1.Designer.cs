@@ -51,20 +51,20 @@
             this.lblArrastre.Location = new System.Drawing.Point(23, 121);
             this.lblArrastre.Name = "lblArrastre";
             this.lblArrastre.Size = new System.Drawing.Size(150, 19);
-            this.lblArrastre.Style = MetroFramework.MetroColorStyle.Silver;
+            this.lblArrastre.Style = MetroFramework.MetroColorStyle.Blue;
             this.lblArrastre.TabIndex = 1;
             this.lblArrastre.Text = "Arrastre los juegos aqui:";
-            this.lblArrastre.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.lblArrastre.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
             // botonConvertir
             // 
             this.botonConvertir.Location = new System.Drawing.Point(262, 348);
             this.botonConvertir.Name = "botonConvertir";
             this.botonConvertir.Size = new System.Drawing.Size(75, 23);
-            this.botonConvertir.Style = MetroFramework.MetroColorStyle.Silver;
+            this.botonConvertir.Style = MetroFramework.MetroColorStyle.Blue;
             this.botonConvertir.TabIndex = 1;
             this.botonConvertir.Text = "Convertir";
-            this.botonConvertir.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.botonConvertir.Theme = MetroFramework.MetroThemeStyle.Light;
             this.toltipArrastre.SetToolTip(this.botonConvertir, "Convierte los juegos agregados");
             this.botonConvertir.UseSelectable = true;
             this.botonConvertir.Click += new System.EventHandler(this.botonConvertir_Click);
@@ -74,10 +74,10 @@
             this.botonEmpaquetar.Location = new System.Drawing.Point(343, 348);
             this.botonEmpaquetar.Name = "botonEmpaquetar";
             this.botonEmpaquetar.Size = new System.Drawing.Size(75, 23);
-            this.botonEmpaquetar.Style = MetroFramework.MetroColorStyle.Silver;
+            this.botonEmpaquetar.Style = MetroFramework.MetroColorStyle.Blue;
             this.botonEmpaquetar.TabIndex = 2;
             this.botonEmpaquetar.Text = "Empaquetar";
-            this.botonEmpaquetar.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.botonEmpaquetar.Theme = MetroFramework.MetroThemeStyle.Light;
             this.toltipArrastre.SetToolTip(this.botonEmpaquetar, "Empaqueta los juegos agregados");
             this.botonEmpaquetar.UseSelectable = true;
             this.botonEmpaquetar.Click += new System.EventHandler(this.botonEmpaquetar_Click);
@@ -94,9 +94,9 @@
             this.panelJuegos.Location = new System.Drawing.Point(23, 143);
             this.panelJuegos.Name = "panelJuegos";
             this.panelJuegos.Size = new System.Drawing.Size(395, 199);
-            this.panelJuegos.Style = MetroFramework.MetroColorStyle.Silver;
+            this.panelJuegos.Style = MetroFramework.MetroColorStyle.Blue;
             this.panelJuegos.TabIndex = 4;
-            this.panelJuegos.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.panelJuegos.Theme = MetroFramework.MetroThemeStyle.Light;
             this.panelJuegos.VerticalScrollbar = true;
             this.panelJuegos.VerticalScrollbarBarColor = true;
             this.panelJuegos.VerticalScrollbarHighlightOnWheel = false;
@@ -121,9 +121,9 @@
             this.comboBox1.Location = new System.Drawing.Point(344, 54);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(74, 29);
-            this.comboBox1.Style = MetroFramework.MetroColorStyle.Silver;
+            this.comboBox1.Style = MetroFramework.MetroColorStyle.Blue;
             this.comboBox1.TabIndex = 6;
-            this.comboBox1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.comboBox1.Theme = MetroFramework.MetroThemeStyle.Light;
             this.toltipArrastre.SetToolTip(this.comboBox1, "Formato al que se desean convertir los juegos");
             this.comboBox1.UseSelectable = true;
             // 
@@ -144,9 +144,9 @@
             this.cbFirware.Location = new System.Drawing.Point(277, 87);
             this.cbFirware.Name = "cbFirware";
             this.cbFirware.Size = new System.Drawing.Size(141, 29);
-            this.cbFirware.Style = MetroFramework.MetroColorStyle.Silver;
+            this.cbFirware.Style = MetroFramework.MetroColorStyle.Blue;
             this.cbFirware.TabIndex = 9;
-            this.cbFirware.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.cbFirware.Theme = MetroFramework.MetroThemeStyle.Light;
             this.toltipArrastre.SetToolTip(this.cbFirware, "Firmware para el que se quiere parchar el juego");
             this.cbFirware.UseSelectable = true;
             this.cbFirware.Visible = false;
@@ -157,10 +157,10 @@
             this.cbApagar.Location = new System.Drawing.Point(23, 64);
             this.cbApagar.Name = "cbApagar";
             this.cbApagar.Size = new System.Drawing.Size(117, 15);
-            this.cbApagar.Style = MetroFramework.MetroColorStyle.Silver;
+            this.cbApagar.Style = MetroFramework.MetroColorStyle.Blue;
             this.cbApagar.TabIndex = 10;
             this.cbApagar.Text = "Apagar al finalizar";
-            this.cbApagar.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.cbApagar.Theme = MetroFramework.MetroThemeStyle.Light;
             this.toltipArrastre.SetToolTip(this.cbApagar, "Apaga el sistema al finalizar la tarea solicitada.\r\n(Si algún archivo se encuentr" +
         "a dañado la app\r\npuede quedar congelada y la pc no se apagará)");
             this.cbApagar.UseSelectable = true;
@@ -171,10 +171,10 @@
             this.cbSplit.Location = new System.Drawing.Point(23, 80);
             this.cbSplit.Name = "cbSplit";
             this.cbSplit.Size = new System.Drawing.Size(70, 15);
-            this.cbSplit.Style = MetroFramework.MetroColorStyle.Silver;
+            this.cbSplit.Style = MetroFramework.MetroColorStyle.Blue;
             this.cbSplit.TabIndex = 12;
             this.cbSplit.Text = "4GB Split";
-            this.cbSplit.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.cbSplit.Theme = MetroFramework.MetroThemeStyle.Light;
             this.toltipArrastre.SetToolTip(this.cbSplit, "Cortar el archivo o archivos resultantes\r\nen archivos de 4GB para unidades FAT32." +
         "\r\n(Solo funciona con xci)");
             this.cbSplit.UseSelectable = true;
@@ -184,10 +184,10 @@
             this.btnCortar.Location = new System.Drawing.Point(181, 348);
             this.btnCortar.Name = "btnCortar";
             this.btnCortar.Size = new System.Drawing.Size(75, 23);
-            this.btnCortar.Style = MetroFramework.MetroColorStyle.Silver;
+            this.btnCortar.Style = MetroFramework.MetroColorStyle.Blue;
             this.btnCortar.TabIndex = 13;
             this.btnCortar.Text = "Cortar";
-            this.btnCortar.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.btnCortar.Theme = MetroFramework.MetroThemeStyle.Light;
             this.toltipArrastre.SetToolTip(this.btnCortar, "Convierte los juegos agregados");
             this.btnCortar.UseSelectable = true;
             this.btnCortar.Click += new System.EventHandler(this.btnCortar_Click);
@@ -199,10 +199,10 @@
             this.metroLabel1.Location = new System.Drawing.Point(277, 60);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(63, 19);
-            this.metroLabel1.Style = MetroFramework.MetroColorStyle.Silver;
+            this.metroLabel1.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroLabel1.TabIndex = 5;
             this.metroLabel1.Text = "Formato:";
-            this.metroLabel1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel1.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
             // cbParchar
             // 
@@ -210,10 +210,10 @@
             this.cbParchar.Location = new System.Drawing.Point(23, 96);
             this.cbParchar.Name = "cbParchar";
             this.cbParchar.Size = new System.Drawing.Size(125, 15);
-            this.cbParchar.Style = MetroFramework.MetroColorStyle.Silver;
+            this.cbParchar.Style = MetroFramework.MetroColorStyle.Blue;
             this.cbParchar.TabIndex = 7;
             this.cbParchar.Text = "Parche de firmware";
-            this.cbParchar.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.cbParchar.Theme = MetroFramework.MetroThemeStyle.Light;
             this.cbParchar.UseSelectable = true;
             this.cbParchar.CheckedChanged += new System.EventHandler(this.cbParchar_CheckedChanged);
             // 
@@ -224,10 +224,10 @@
             this.metroLabel2.Location = new System.Drawing.Point(168, 93);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(103, 19);
-            this.metroLabel2.Style = MetroFramework.MetroColorStyle.Silver;
+            this.metroLabel2.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroLabel2.TabIndex = 8;
             this.metroLabel2.Text = "Firmware patch:";
-            this.metroLabel2.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroLabel2.Theme = MetroFramework.MetroThemeStyle.Light;
             this.metroLabel2.Visible = false;
             // 
             // Form1
@@ -250,9 +250,7 @@
             this.Controls.Add(this.lblArrastre);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Style = MetroFramework.MetroColorStyle.Silver;
             this.Text = "Nintendo Switch Clean and Builder GUI";
-            this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.Resize += new System.EventHandler(this.Form1_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -44,9 +44,9 @@
             this.panelJuegos.Location = new System.Drawing.Point(20, 60);
             this.panelJuegos.Name = "panelJuegos";
             this.panelJuegos.Size = new System.Drawing.Size(432, 295);
-            this.panelJuegos.Style = MetroFramework.MetroColorStyle.Silver;
+            this.panelJuegos.Style = MetroFramework.MetroColorStyle.Blue;
             this.panelJuegos.TabIndex = 5;
-            this.panelJuegos.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.panelJuegos.Theme = MetroFramework.MetroThemeStyle.Light;
             this.panelJuegos.VerticalScrollbar = true;
             this.panelJuegos.VerticalScrollbarBarColor = true;
             this.panelJuegos.VerticalScrollbarHighlightOnWheel = false;
@@ -60,9 +60,7 @@
             this.Controls.Add(this.panelJuegos);
             this.KeyPreview = true;
             this.Name = "FormJuegosCarpeta";
-            this.Style = MetroFramework.MetroColorStyle.Silver;
             this.Text = "Juegos a empaquetar";
-            this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormJuegosCarpeta_KeyDown);
             this.Resize += new System.EventHandler(this.FormJuegosCarpeta_Resize);
             this.ResumeLayout(false);

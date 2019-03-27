@@ -49,36 +49,36 @@
             this.quitarJuego.Location = new System.Drawing.Point(359, 5);
             this.quitarJuego.Name = "quitarJuego";
             this.quitarJuego.Size = new System.Drawing.Size(27, 23);
-            this.quitarJuego.Style = MetroFramework.MetroColorStyle.Silver;
+            this.quitarJuego.Style = MetroFramework.MetroColorStyle.Blue;
             this.quitarJuego.TabIndex = 1;
             this.quitarJuego.Text = "X";
-            this.quitarJuego.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.quitarJuego.Theme = MetroFramework.MetroThemeStyle.Light;
             this.toolTip1.SetToolTip(this.quitarJuego, "Quitar juego");
             this.quitarJuego.UseSelectable = true;
             this.quitarJuego.Click += new System.EventHandler(this.quitarJuego_Click);
             // 
             // toolTip1
             // 
-            this.toolTip1.Style = MetroFramework.MetroColorStyle.Silver;
+            this.toolTip1.Style = MetroFramework.MetroColorStyle.Blue;
             this.toolTip1.StyleManager = null;
-            this.toolTip1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.toolTip1.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
             // btnMostrarJuegos
             // 
             this.btnMostrarJuegos.Location = new System.Drawing.Point(339, 5);
             this.btnMostrarJuegos.Name = "btnMostrarJuegos";
             this.btnMostrarJuegos.Size = new System.Drawing.Size(27, 23);
-            this.btnMostrarJuegos.Style = MetroFramework.MetroColorStyle.Silver;
+            this.btnMostrarJuegos.Style = MetroFramework.MetroColorStyle.Blue;
             this.btnMostrarJuegos.TabIndex = 1;
             this.btnMostrarJuegos.Text = "...";
-            this.btnMostrarJuegos.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.btnMostrarJuegos.Theme = MetroFramework.MetroThemeStyle.Light;
             this.toolTip1.SetToolTip(this.btnMostrarJuegos, "Mostrara Archivos");
             this.btnMostrarJuegos.UseSelectable = true;
             this.btnMostrarJuegos.Click += new System.EventHandler(this.btnMostrarJuegos_Click);
             // 
             // DirectorioArrastrado
             // 
-            this.BackColor = System.Drawing.Color.Silver;
+            this.BackColor = System.Drawing.Color.Aquamarine;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.lblQuitarJuego);
             this.Controls.Add(this.quitarJuego);

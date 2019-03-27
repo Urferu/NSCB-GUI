@@ -59,9 +59,9 @@
             this.txtNombreFinal.SelectionStart = 0;
             this.txtNombreFinal.ShortcutsEnabled = true;
             this.txtNombreFinal.Size = new System.Drawing.Size(452, 20);
-            this.txtNombreFinal.Style = MetroFramework.MetroColorStyle.Silver;
+            this.txtNombreFinal.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtNombreFinal.TabIndex = 0;
-            this.txtNombreFinal.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.txtNombreFinal.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtNombreFinal.UseSelectable = true;
             this.txtNombreFinal.WaterMark = "Nombre Final del Juego";
             this.txtNombreFinal.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -72,10 +72,10 @@
             this.botonAceptar.Location = new System.Drawing.Point(212, 89);
             this.botonAceptar.Name = "botonAceptar";
             this.botonAceptar.Size = new System.Drawing.Size(75, 23);
-            this.botonAceptar.Style = MetroFramework.MetroColorStyle.Silver;
+            this.botonAceptar.Style = MetroFramework.MetroColorStyle.Blue;
             this.botonAceptar.TabIndex = 2;
             this.botonAceptar.Text = "Aceptar";
-            this.botonAceptar.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.botonAceptar.Theme = MetroFramework.MetroThemeStyle.Light;
             this.botonAceptar.UseSelectable = true;
             this.botonAceptar.Click += new System.EventHandler(this.botonAceptar_Click);
             // 
@@ -88,9 +88,7 @@
             this.Controls.Add(this.txtNombreFinal);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmNombreEmpaquetado";
-            this.Style = MetroFramework.MetroColorStyle.Silver;
             this.Text = "Capture el nombre del archivo sin extensión";
-            this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.ResumeLayout(false);
 
         }

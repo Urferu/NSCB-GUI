@@ -46,10 +46,10 @@
             this.lblArchivos.Location = new System.Drawing.Point(329, 88);
             this.lblArchivos.Name = "lblArchivos";
             this.lblArchivos.Size = new System.Drawing.Size(86, 19);
-            this.lblArchivos.Style = MetroFramework.MetroColorStyle.Silver;
+            this.lblArchivos.Style = MetroFramework.MetroColorStyle.Blue;
             this.lblArchivos.TabIndex = 13;
             this.lblArchivos.Text = "0 partes de 5";
-            this.lblArchivos.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.lblArchivos.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
             // pbArchivos
             // 
@@ -65,10 +65,10 @@
             this.lblBytesLeidos.Location = new System.Drawing.Point(338, 134);
             this.lblBytesLeidos.Name = "lblBytesLeidos";
             this.lblBytesLeidos.Size = new System.Drawing.Size(77, 19);
-            this.lblBytesLeidos.Style = MetroFramework.MetroColorStyle.Silver;
+            this.lblBytesLeidos.Style = MetroFramework.MetroColorStyle.Blue;
             this.lblBytesLeidos.TabIndex = 15;
             this.lblBytesLeidos.Text = "0/14502354";
-            this.lblBytesLeidos.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.lblBytesLeidos.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
             // pbBytesLeidos
             // 
@@ -94,10 +94,10 @@
             this.botonCancelar.Location = new System.Drawing.Point(340, 154);
             this.botonCancelar.Name = "botonCancelar";
             this.botonCancelar.Size = new System.Drawing.Size(75, 23);
-            this.botonCancelar.Style = MetroFramework.MetroColorStyle.Silver;
+            this.botonCancelar.Style = MetroFramework.MetroColorStyle.Blue;
             this.botonCancelar.TabIndex = 16;
             this.botonCancelar.Text = "Cancelar";
-            this.botonCancelar.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.botonCancelar.Theme = MetroFramework.MetroThemeStyle.Light;
             this.botonCancelar.UseSelectable = true;
             this.botonCancelar.Click += new System.EventHandler(this.botonCancelar_Click);
             // 
@@ -121,9 +121,7 @@
             this.MinimizeBox = false;
             this.Name = "FormCortando";
             this.Resizable = false;
-            this.Style = MetroFramework.MetroColorStyle.Silver;
             this.Text = "Cortando XCI...";
-            this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.Load += new System.EventHandler(this.FormCortando_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
