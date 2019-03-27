@@ -70,15 +70,6 @@ namespace NSCB_GUI
                 }
 
                 convertirEmpaquetar.WaitForExit();
-                if (cortar)
-                {
-                    DirectoryInfo dir = new DirectoryInfo(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\NSCB_output");
-                    DirectoryInfo[] directs = dir.GetDirectories();
-                    foreach(DirectoryInfo direct in directs)
-                    {
-                        XCICutter.cutter(direct.FullName);
-                    }
-                }
             }
             else
             {
@@ -106,10 +97,10 @@ namespace NSCB_GUI
                     }
                     procesoConversion.ReportProgress(2);
                 }
-                if (cortar)
-                {
-                    XCICutter.cutter(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\NSCB_output");
-                }
+            }
+            if (cortar)
+            {
+                XCICutter.cutter(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\NSCB_output");
             }
         }
 
